@@ -1,8 +1,19 @@
 import React from "react";
 import axios from "axios";
-import "./KredytForm.css"
+import "./KredytForm.css";
+import MoneyIcon from '@mui/icons-material/Money';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import LocalAtmIcon from '@mui/icons-material/LocalAtm';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import PriceCheckIcon from '@mui/icons-material/PriceCheck';
+import * as PropTypes from "prop-types";
+import { CFormCheck } from '@coreui/react'
+
+
 export default function KredytForm(){
     axios.defaults.withCredentials = true;
+
+
 
     return(
     <div className={"cont"}>
@@ -15,8 +26,8 @@ export default function KredytForm(){
         </div>
         <div className={"dol"}>
             <div className={"zakladka"}>
-                <a href={"pierwsza"} >Pierwsza pożyczka</a>
-                <a  href={"kolejna"}>Kolejna pożyczka</a> <br/> <br/>
+                <a defaultChecked href={"pierwsza"} >Pierwsza pożyczka</a>
+                <a  href={"kolejna"}>Kolejna pożyczka</a> <br/>
             </div>
 
                 <div className={"tab"}>
@@ -30,10 +41,16 @@ export default function KredytForm(){
                 </div>
                 <div className={"tab1"}>
                     <h1>Pożyczka:</h1>
-                    <h2>Podaj kwotę: <input/>zł </h2>
-
-                    <h2>Czas trwania: 30 dni</h2>
-                    <h2>Rata: 1500 zł</h2>
+                    <h2>Podaj kwotę: <br/>
+                    <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option1" autoComplete="off" label="500zł" defaultChecked/>
+                    <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option2" autoComplete="off" label="700zł"/>
+                    <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option3" autoComplete="off" label="1000zł" />
+                    <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option4" autoComplete="off" label="1200zł"/>
+                    <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option5" autoComplete="off" label="1500zł"/>
+                    <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option6" autoComplete="off" label="1700zł"/>
+                    <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option7" autoComplete="off" label="2000zł"/>
+                    <br/>Czas trwania: 30 dni <br/>
+                    Rata: 1500 zł</h2>
                     <h3><button>Weź pożyczkę</button></h3>
                 </div>
 
@@ -42,5 +59,4 @@ export default function KredytForm(){
 
 
     </div>
-)
-}
+)}
