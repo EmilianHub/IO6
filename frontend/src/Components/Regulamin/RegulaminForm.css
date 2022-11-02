@@ -1,0 +1,21 @@
+#reg{
+    text-align: center;
+}
+a{
+    background-color: #FFA07A;
+    text-align: justify;
+    text-decoration: none;
+    font-size: 24px;
+    border-color: #FFA07A;
+    lighting-color: #FFA07A;
+    line-height: normal;
+    color: black;
+}
+a:hover{
+    color: red;
+    text-decoration: underline;
+}
+.link{
+    text-align: justify-all;
+    padding-left:600px ;
+}

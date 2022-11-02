@@ -4,6 +4,7 @@ import KredytForm from "./Components/Kredyt/KredytForm"
 import KontaktForm from "./Components/Kontakt/KontaktForm";
 import PomocForm from "./Components/Pomoc/PomocForm";
 import RegulaminForm from "./Components/Regulamin/RegulaminForm";
+import WarunkiForm from "./Components/Kontakt/Warunki";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
                   <Route path={"/kontakt"} element={<KontaktForm/>}/>
                   <Route path={"/pomoc"} element={<PomocForm/>}/>
                   <Route path={"/regulamin"} element={<RegulaminForm/>}/>
+                  <Route path={"/warunki"} element={<WarunkiForm/>}/>
               </Routes>
           </Router>
       </div>
