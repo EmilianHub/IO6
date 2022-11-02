@@ -1,6 +1,6 @@
 .cont {
     background-color: grey;
-    height: 870px;
+    height:auto;
     background-image: url("./tlo.webp");
 }
 .gora h1 {
@@ -100,7 +100,9 @@ a:link {
     font-size: 35px;
     font-family: 'Times New Roman';
     text-align: center;
-    font-weight: bold;
+    font-weight: bolder;
+    color: yellow;
+
 }
 .dol h3{
     text-align: center;

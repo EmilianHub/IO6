@@ -1,0 +1,107 @@
+input:invalid {
+    border-color: red;
+    outline: none;
+    box-shadow: 0 0 2px red;
+}
+input:required:valid {
+    border-color: #4dcc23;
+    outline: none;
+    box-shadow: 0 0 2px #4dcc23;
+}
+input:invalid,
+textarea:invalid {
+    border-color: red;
+    outline: none;
+    box-shadow: 0 0 2px red;
+}
+
+input:required:valid,
+textarea:required:valid {
+    border-color: #4dcc23;
+    outline: none;
+    box-shadow: 0 0 2px #4dcc23;
+}
+/* jeżeli pole jest błędne ale i nie pokazuje placeholdera */
+input:not(:placeholder-shown):invalid,
+textarea:not(:placeholder-shown):invalid {
+    border-color: red;
+    outline: none;
+    box-shadow: 0 0 2px red;
+}
+
+input:not(:placeholder-shown):required:valid,
+textarea:not(:placeholder-shown):required:valid {
+    border-color: #4dcc23;
+    outline: none;
+    box-shadow: 0 0 2px #4dcc23;
+}
+input {}
+.form-error-text {
+    display: none;
+}
+input:not(:placeholder-shown):invalid {
+    border-color: tomato;
+    outline: none;
+    box-shadow: 0 0 2px tomato;
+}
+input:not(:placeholder-shown):invalid ~ .form-error-text {
+    display: block;
+}
+input:not(:placeholder-shown):required:valid {
+    border-color: #4dcc23;
+    outline: none;
+    box-shadow: 0 0 2px #4dcc23;
+}
+input:not(:placeholder-shown):required:valid ~ .form-error-text {
+    display: none;
+}
+body{
+    background-color: #FFA07A;
+}
+.form-message {
+    color: tomato;
+    padding: 10px 0;
+}
+.form-message h3 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+    margin-top: 0;
+}
+.form-message ul {
+    list-style: none;
+    font-size: 0.8rem;
+    margin:0 0 1rem;
+    padding-left: 0;
+}
+.form-error-text {
+    color: tomato;
+    font-size: 0.8rem;
+}
+.form-error-inline .form-error-text {
+    display: none;
+}
+h1{
+    text-align: center;
+    font-weight: bold;
+    padding: 20px;
+    font-size: 42px;
+    font-family: 'Times New Roman';
+}
+h2{
+    text-align: center;
+    font-family: 'Times New Roman';
+    padding: 20px;
+    font-size: 25px;
+}
+h3{
+    font-weight: bold;
+    text-decoration: underline;
+}
+.form-row{
+    text-align: center;
+    font-size: 28px;
+}
+.submit-btn{
+    font-weight: bold;
+    ;
+}

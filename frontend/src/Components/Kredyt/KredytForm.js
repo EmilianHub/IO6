@@ -26,8 +26,12 @@ export default function KredytForm(){
         </div>
         <div className={"dol"}>
             <div className={"zakladka"}>
-                <a defaultChecked href={"pierwsza"} >Pierwsza pożyczka</a>
-                <a  href={"kolejna"}>Kolejna pożyczka</a> <br/>
+                <a href={"kalkulator"}>Kalkulator</a>
+                <a href={"/pomoc"}>Pomoc</a>
+                <a  href={"pierwsza"} >Pierwsza pożyczka</a>
+                <a  href={"/formularz-zdolnosci-kredytowej"}>Kolejna pożyczka</a>
+                <a href={"/kontakt"}>Kontakt</a>
+                <a href={"/regulamin"}>Regulamin</a> <br/>
             </div>
 
                 <div className={"tab"}>
@@ -50,7 +54,7 @@ export default function KredytForm(){
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option6" autoComplete="off" label="1700zł"/>
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option7" autoComplete="off" label="2000zł"/>
                     <br/>Czas trwania: 30 dni <br/>
-                    Rata: 1500 zł</h2>
+                    Rata: 1600 zł</h2>
                     <h3><button>Weź pożyczkę</button></h3>
                 </div>
 

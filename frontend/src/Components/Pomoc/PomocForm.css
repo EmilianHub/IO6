@@ -1,0 +1,15 @@
+.pomocny{
+    padding: 20px;
+
+}
+h2{
+    text-align: justify;
+    text-decoration: none;
+    font-weight: bold;
+}
+h3{
+    text-align: justify;
+    text-decoration: none;
+    font-weight: inherit;
+    font-size: large;
+}
