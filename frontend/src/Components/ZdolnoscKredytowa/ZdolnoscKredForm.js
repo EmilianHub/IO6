@@ -8,11 +8,11 @@ import {format} from "date-fns";
 export default function ZdolnoscKredForm(){
     let navigate = useNavigate();
     let date = new Date(Date.now())
-    let date2 = date
-    date2.setMonth(date.getMonth() + 12)
+    let date2 = new Date(Date.now())
+    date2.setMonth(date2.getMonth() + 12)
     const pozyczki = new PozyczkiClass(5000, date, date2);
 
-    console.log(format(pozyczki.dataZaciagnieciaPozyczki, 'yyyy-dd-MM HH:mm:ss').toString())
+    console.log(pozyczki)
 
     const [zarobki, setZarobki] = useState(3000);
     const [raty, setRaty] = useState(0);
@@ -45,7 +45,7 @@ export default function ZdolnoscKredForm(){
                     <fieldset>
                         <label className={"DochodLabel"}>Dochód netto</label>
                         <input className={"DochodInput"} type={"text"}
-                               defaultValue={zarobki} onChange={(value) => setZarobki(value.target)}/>
+                               defaultValue={zarobki} onChange={(value) => setZarobki(value.target.value)}/>
                         <div className={"Desc"}>Kwota na rękę bez podatku</div>
                     </fieldset>
                     <fieldset>
@@ -59,7 +59,7 @@ export default function ZdolnoscKredForm(){
                         <div className={"Desc"}>Np. czynsz, zakupy</div>
                     </fieldset>
                 </div>
-                <button type={"submit"} className={"SubmitButton"} onClick={sendFrom}>Oblicz</button>
+                <button type={"submit"} className={"SubmitButton"} onClick={() => sendFrom()}>Oblicz</button>
             </form>
         </div>
     )

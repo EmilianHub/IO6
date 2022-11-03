@@ -19,8 +19,8 @@ public class ZdolnoscKredytowaService {
     private final static String NEGATIVE_RESPONSE = "NEGATIVE";
 
     public String obliczZdolnoscKredytowa(Pozyczki pozyczki, String wydatki, String zarobki, String raty){
-        double wysokoscRatyKredytu = Double.parseDouble(wydatki) - Double.parseDouble(zarobki) - Double.parseDouble(raty);
-        long okresSplaty = Duration.between(pozyczki.getDataZakonczeniaPozyczki(), pozyczki.getDataZaciagnieciaPozyczki()).toDays();
+        double wysokoscRatyKredytu = Double.parseDouble(zarobki) - Double.parseDouble(wydatki) - Double.parseDouble(raty);
+        long okresSplaty = Duration.between(pozyczki.getDataZaciagnieciaPozyczki(), pozyczki.getDataZakonczeniaPozyczki()).toDays();
         okresSplaty = Math.floorDiv(okresSplaty, 30);
 
         double maxWysokoscKredytu =  wysokoscRatyKredytu * okresSplaty;
