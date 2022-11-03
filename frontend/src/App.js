@@ -5,11 +5,13 @@ import KontaktForm from "./Components/Kontakt/KontaktForm";
 import PomocForm from "./Components/Pomoc/PomocForm";
 import RegulaminForm from "./Components/Regulamin/RegulaminForm";
 import WarunkiForm from "./Components/Kontakt/Warunki";
+import NavBar from "./Components/NavBar/NavBar"
 
 function App() {
   return (
       <div className="App">
           <Router>
+              <NavBar/>
               <Routes>
                   <Route path={"/formularz-zdolnosci-kredytowej"} element={<ZdolnoscKredFrom/>}/>
                   <Route path={"/strona-wez-kredyt"} element={<KredytForm/>}/>
