@@ -1,13 +1,13 @@
 package com.minutowka.io6.JPA;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "uzytkownicy")
 public class UzytkownicyJPA {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column

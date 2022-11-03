@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class DaneKredytoweJPA {
 
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "nr_konta")

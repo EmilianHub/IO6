@@ -1,6 +1,10 @@
 import HomeIcon from '@mui/icons-material/Home';
 import LoginIcon from '@mui/icons-material/Login';
 import Register from '@mui/icons-material/AppRegistration';
+import Loan from '@mui/icons-material/CreditScore';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import HelpIcon from '@mui/icons-material/Help';
+import ReceiptIcon from '@mui/icons-material/Receipt';
 
 export const NavBarData = [
     {
@@ -10,22 +14,22 @@ export const NavBarData = [
     },
     {
         name: "Pożyczki",
-        img: <HomeIcon/>,
+        img: <Loan/>,
         link: "/strona-wez-kredyt",
     },
     {
         name: "Kontakt",
-        img: <HomeIcon/>,
+        img: <ContactsIcon/>,
         link: "/kontakt",
     },
     {
         name: "Pomoc",
-        img: <HomeIcon/>,
+        img: <HelpIcon/>,
         link: "/pomoc",
     },
     {
         name: "Regulamin",
-        img: <HomeIcon/>,
+        img: <ReceiptIcon/>,
         link: "/regulamin",
     },
     {

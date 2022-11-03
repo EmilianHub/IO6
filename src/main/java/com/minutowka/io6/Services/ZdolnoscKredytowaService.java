@@ -18,21 +18,22 @@ public class ZdolnoscKredytowaService {
     private final static String POSITIVE_RESPONSE = "POSITIVE";
     private final static String NEGATIVE_RESPONSE = "NEGATIVE";
 
-    public String obliczZdolnoscKredytowa(Pozyczki pozyczki, String wydatki, String zarobki, String raty){
-        double wysokoscRatyKredytu = Double.parseDouble(zarobki) - Double.parseDouble(wydatki) - Double.parseDouble(raty);
+    public String obliczZdolnoscKredytowa(Pozyczki pozyczki, Double wydatki, Double zarobki, Double raty){
+        double wysokoscRatyKredytu = zarobki - wydatki - raty;
         long okresSplaty = Duration.between(pozyczki.getDataZaciagnieciaPozyczki(), pozyczki.getDataZakonczeniaPozyczki()).toDays();
         okresSplaty = Math.floorDiv(okresSplaty, 30);
 
         double maxWysokoscKredytu =  wysokoscRatyKredytu * okresSplaty;
 
         if(maxWysokoscKredytu >= pozyczki.getKwotaPozyczki()){
+            saveDaneKredytowe(wydatki, zarobki, pozyczki.getUzytkownik().getId());
             return POSITIVE_RESPONSE;
         }
         return NEGATIVE_RESPONSE;
     }
 
-    public String saveDaneKredytowe(Double wydatki, Double zarobki, Double raty) {
-        DaneKredytoweJPA dbDaneKredytowe = daneKredytoweRepository.findDaneKredytoweJPAByUzytkownikId(1L)
+    public String saveDaneKredytowe(Double wydatki, Double zarobki, Long userID) {
+        DaneKredytoweJPA dbDaneKredytowe = daneKredytoweRepository.findDaneKredytoweJPAByUzytkownikId(userID)
                 .orElseThrow(() -> CustomExceptionBuilder.getCustomException("No entity found"));
 
         dbDaneKredytowe.setWydatki(wydatki);

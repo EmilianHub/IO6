@@ -2,17 +2,12 @@ import React, {useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import "./ZdolnoscKredForm.css"
-import PozyczkiClass from "../Classes/PozyczkiClass"
-import {format} from "date-fns";
+import {useLocation} from "react-router-dom";
 
-export default function ZdolnoscKredForm({pozyczkiClass}){
+export default function ZdolnoscKredForm(){
     let navigate = useNavigate();
-    let date = new Date(Date.now())
-    let date2 = new Date(Date.now())
-    date2.setMonth(date2.getMonth() + 12)
-    let pozyczki = new PozyczkiClass(5000, date, date2);
-
-    console.log(pozyczki)
+    const { state } = useLocation();
+    console.log(state)
 
     const [zarobki, setZarobki] = useState(3000);
     const [raty, setRaty] = useState(0);
@@ -20,9 +15,9 @@ export default function ZdolnoscKredForm({pozyczkiClass}){
 
     function sendFrom(){
         axios.post("http://localhost:8080/zdolnosc-kredytowa/process", {
-                kwotaPozyczki: pozyczki.kwotaPozyczki,
-                poczatekPozyczki: format(pozyczki.dataZaciagnieciaPozyczki, 'yyyy-dd-MM HH:mm:ss').toString(),
-                zakonczeniePozyczki: format(pozyczki.dataZakonczeniaPozyczki, 'yyyy-dd-MM HH:mm:ss').toString()
+                kwotaPozyczki: parseFloat(state.kwota),
+                poczatekPozyczki: state.rozpoczecie,
+                zakonczeniePozyczki: state.zakonczenie
             }, {
             params:{
                 wydatki,
@@ -38,11 +33,8 @@ export default function ZdolnoscKredForm({pozyczkiClass}){
                 window.alert("Twoja zdolność kredytowa została rozpatrzona negatywnie. Zmień warunki kredytowe.");
                 navigate('/strona-wez-kredyt');
             }
-
         })
     }
-
-
 
     return(
         <div className={"Formularz"}>
@@ -51,7 +43,7 @@ export default function ZdolnoscKredForm({pozyczkiClass}){
                 <p>Poprzez wypełnienie formularza, zostanie wyliczona maksymalna kwota pożczyki. Pamiętaj aby dane podawać zgodnie z prawdą.
                 Dane nie zostaną nigdzie udostępnione.</p>
             </div>
-            <form action={"#"}>
+            <div>
                 <h2>Przychody i koszty utrzymania</h2>
                 <div className={"Kontyner"}>
                     <fieldset>
@@ -71,8 +63,8 @@ export default function ZdolnoscKredForm({pozyczkiClass}){
                         <div className={"Desc"}>Np. czynsz, zakupy</div>
                     </fieldset>
                 </div>
-                <button type={"submit"} className={"SubmitButton"} onClick={sendFrom}>Oblicz</button>
-            </form>
+                <button className={"SubmitButton"} onClick={sendFrom}>Oblicz</button>
+            </div>
         </div>
     )
 }
