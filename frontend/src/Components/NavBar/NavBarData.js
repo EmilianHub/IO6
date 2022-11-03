@@ -11,7 +11,22 @@ export const NavBarData = [
     {
         name: "Pożyczki",
         img: <HomeIcon/>,
-        link: "/formularz-zdolnosci-kredytowej",
+        link: "/strona-wez-kredyt",
+    },
+    {
+        name: "Kontakt",
+        img: <HomeIcon/>,
+        link: "/kontakt",
+    },
+    {
+        name: "Pomoc",
+        img: <HomeIcon/>,
+        link: "/pomoc",
+    },
+    {
+        name: "Regulamin",
+        img: <HomeIcon/>,
+        link: "/regulamin",
     },
     {
         name: "Login",

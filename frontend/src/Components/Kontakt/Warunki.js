@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-
+import "./Warunki.css"
 
 export default function WarunkiForm(){
     axios.defaults.withCredentials = true;
@@ -8,7 +8,7 @@ export default function WarunkiForm(){
 
 
     return(
-        <div >
+        <div className={"WarunkiBody"}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat suscipit fringilla. Donec quis semper
             purus. Proin lobortis, lectus at condimentum mattis, nisl odio gravida magna, sed ultricies velit sem eu eros.
             Vivamus condimentum quis lorem eu dictum. Integer ultricies tempus turpis quis mattis. Quisque sit amet varius

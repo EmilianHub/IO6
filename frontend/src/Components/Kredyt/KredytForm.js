@@ -18,24 +18,13 @@ export default function KredytForm(){
     return(
     <div className={"cont"}>
         <div className={"gora"}>
-            <h1>Minutówka</h1>
-            <h2>Pożyczka jakiej potrzebujesz w minutę</h2> <br/>
-            <h2>Nawet do 2000 zł</h2> <br/>
-            <h2>RRSO: 0%</h2> <br/>
-            <h3><button>Sprawdź swoją zdolność kredytową</button></h3><br/>
+            <h2 className={"KredytyH2"}>Pożyczka jakiej potrzebujesz w minutę</h2> <br/>
+            <h2 className={"KredytyH2"}>Nawet do 2000 zł</h2> <br/>
+            <h2 className={"KredytyH2"}>RRSO: 0%</h2> <br/>
         </div>
         <div className={"dol"}>
-            <div className={"zakladka"}>
-                <a href={"kalkulator"}>Kalkulator</a>
-                <a href={"/pomoc"}>Pomoc</a>
-                <a  href={"pierwsza"} >Pierwsza pożyczka</a>
-                <a  href={"/formularz-zdolnosci-kredytowej"}>Kolejna pożyczka</a>
-                <a href={"/kontakt"}>Kontakt</a>
-                <a href={"/regulamin"}>Regulamin</a> <br/>
-            </div>
-
                 <div className={"tab"}>
-                    <h1>Informacje:</h1>
+                    <h1 className={"KredytyH1"}>Informacje:</h1>
                     Całkowity koszt pierwszej pożczyki 0zł <p/>
                     Pieniądze na koncie tego samego dnia <p/>
                     Oprocentowanie w skali roku 0% <p/>
@@ -44,8 +33,8 @@ export default function KredytForm(){
 
                 </div>
                 <div className={"tab1"}>
-                    <h1>Pożyczka:</h1>
-                    <h2>Podaj kwotę: <br/>
+                    <h1 className={"KredytyH1"}>Pożyczka:</h1>
+                    <h2 className={"KredytyH2"}>Podaj kwotę: <br/>
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option1" autoComplete="off" label="500zł" defaultChecked/>
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option2" autoComplete="off" label="700zł"/>
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option3" autoComplete="off" label="1000zł" />
@@ -55,12 +44,8 @@ export default function KredytForm(){
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option7" autoComplete="off" label="2000zł"/>
                     <br/>Czas trwania: 30 dni <br/>
                     Rata: 1600 zł</h2>
-                    <h3><button>Weź pożyczkę</button></h3>
+                    <h3 className={"KredytyH3"}><button className={"KredytyButton"}>Weź pożyczkę</button></h3>
                 </div>
-
-
         </div>
-
-
     </div>
 )}

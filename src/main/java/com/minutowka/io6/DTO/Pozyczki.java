@@ -24,11 +24,12 @@ public class Pozyczki {
 
     @JsonCreator
     public Pozyczki(@JsonProperty("poczatekPozyczki") String rozpoczecie, @JsonProperty("zakonczeniePozyczki") String zakonczenie){
-        this.dataZaciagnieciaPozyczki = LocalDateTime.parse(convertToLocalDateTime(rozpoczecie));
-        this.dataZakonczeniaPozyczki = LocalDateTime.parse(convertToLocalDateTime(zakonczenie));
+        this.dataZaciagnieciaPozyczki = convertToLocalDateTime(rozpoczecie);
+        this.dataZakonczeniaPozyczki = convertToLocalDateTime(zakonczenie);
     }
 
-    private String convertToLocalDateTime(String date){
-        return date.replaceAll(" ", "T");
+    private LocalDateTime convertToLocalDateTime(String date){
+        date = date.replaceAll(" ", "T");
+        return LocalDateTime.parse(date);
     }
 }
