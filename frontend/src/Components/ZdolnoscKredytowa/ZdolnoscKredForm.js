@@ -5,12 +5,12 @@ import "./ZdolnoscKredForm.css"
 import PozyczkiClass from "../Classes/PozyczkiClass"
 import {format} from "date-fns";
 
-export default function ZdolnoscKredForm(){
+export default function ZdolnoscKredForm({pozyczkiClass}){
     let navigate = useNavigate();
     let date = new Date(Date.now())
     let date2 = new Date(Date.now())
     date2.setMonth(date2.getMonth() + 12)
-    const pozyczki = new PozyczkiClass(5000, date, date2);
+    let pozyczki = new PozyczkiClass(5000, date, date2);
 
     console.log(pozyczki)
 
@@ -29,8 +29,20 @@ export default function ZdolnoscKredForm(){
                 raty,
                 zarobki
             }}
-        ).then((response) => navigate('/kredyt-podsumowanie/' + response.data))
+        ).then((response) => {
+            console.log(response.data)
+            if(response.data==="POSITIVE"){
+                window.alert("Twoja zdolność kredytowa została rozpatrzona pomyślnie. Pożyczka została przyznana.");
+                navigate('/kredyt-podsumowanie');
+            }else{
+                window.alert("Twoja zdolność kredytowa została rozpatrzona negatywnie. Zmień warunki kredytowe.");
+                navigate('/strona-wez-kredyt');
+            }
+
+        })
     }
+
+
 
     return(
         <div className={"Formularz"}>
@@ -59,7 +71,7 @@ export default function ZdolnoscKredForm(){
                         <div className={"Desc"}>Np. czynsz, zakupy</div>
                     </fieldset>
                 </div>
-                <button type={"submit"} className={"SubmitButton"} onClick={() => sendFrom()}>Oblicz</button>
+                <button type={"submit"} className={"SubmitButton"} onClick={sendFrom}>Oblicz</button>
             </form>
         </div>
     )
