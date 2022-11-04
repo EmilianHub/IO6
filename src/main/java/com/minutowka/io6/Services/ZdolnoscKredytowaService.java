@@ -33,7 +33,7 @@ public class ZdolnoscKredytowaService {
     }
 
     public String saveDaneKredytowe(Double wydatki, Double zarobki, Long userID) {
-        DaneKredytoweJPA dbDaneKredytowe = daneKredytoweRepository.findDaneKredytoweJPAByUzytkownikId(userID)
+        DaneKredytoweJPA dbDaneKredytowe = daneKredytoweRepository.findByUzytkownikJPAId(userID)
                 .orElseThrow(() -> CustomExceptionBuilder.getCustomException("No entity found"));
 
         dbDaneKredytowe.setWydatki(wydatki);
