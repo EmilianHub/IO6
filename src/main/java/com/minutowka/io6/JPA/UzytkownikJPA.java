@@ -3,7 +3,10 @@ package com.minutowka.io6.JPA;
 import lombok.*;
 
 import javax.persistence.*;
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Builder
 @Getter

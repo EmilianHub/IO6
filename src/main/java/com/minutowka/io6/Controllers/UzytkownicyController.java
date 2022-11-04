@@ -21,5 +21,10 @@ public class UzytkownicyController {
     {
         return uzytkownikServices.saveUzytkownik(uzytkownik);
     }
+    @PostMapping("logowanie")
+    public Long login (@RequestParam("login")String login,@RequestParam("haslo")String haslo)
+    {
+        return uzytkownikServices.getuzytkownik(login,haslo);
+    }
 
 }
