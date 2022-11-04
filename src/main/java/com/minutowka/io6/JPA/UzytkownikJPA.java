@@ -1,11 +1,15 @@
 package com.minutowka.io6.JPA;
 
-import lombok.Builder;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "uzytkownicy")
 public class UzytkownikJPA {
 

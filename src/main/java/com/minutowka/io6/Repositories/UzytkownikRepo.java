@@ -5,7 +5,9 @@ import com.minutowka.io6.JPA.UzytkownikJPA;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UzytkownikRepo extends JpaRepository<UzytkownikJPA, Long> {
-
+    Optional<UzytkownikJPA> findByLoginAndHaslo(String login, String haslo);
 }
