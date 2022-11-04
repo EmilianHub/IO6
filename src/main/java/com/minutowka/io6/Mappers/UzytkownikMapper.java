@@ -2,9 +2,11 @@ package com.minutowka.io6.Mappers;
 
 import com.minutowka.io6.DTO.Uzytkownik;
 import com.minutowka.io6.JPA.UzytkownikJPA;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
-
-@ApplicationScope
+@Service
+@NoArgsConstructor
 public class UzytkownikMapper {
     public  UzytkownikJPA toJPA(Uzytkownik uzytkownik){
         return

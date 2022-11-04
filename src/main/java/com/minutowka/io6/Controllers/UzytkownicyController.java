@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/uzytkownik", method = {RequestMethod.GET, RequestMethod.POST})
-@CrossOrigin(value = "http://localhost:3000")
+@CrossOrigin(value = "http://localhost:3000/")
 public class UzytkownicyController {
     @Autowired
    private UzytkownikServices uzytkownikServices;
@@ -17,6 +17,11 @@ public class UzytkownicyController {
     {
 
         return uzytkownikServices.saveUzytkownik(uzytkownik);
+    }
+    @PostMapping("logowanie")
+    public Long login (@RequestParam("login")String login,@RequestParam("haslo")String haslo)
+    {
+        return uzytkownikServices.getuzytkownik(login,haslo);
     }
 
 }

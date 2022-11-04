@@ -6,12 +6,12 @@ import {useNavigate} from "react-router-dom";
 
 export default function RejForm(){
     let navigate = useNavigate();
-    const [imie, setImie] = useState(3000);
-    const [nazwisko, setNazwisko] = useState(0);
-    const [email, setEmail] = useState(1500);
-    const [haslo, setHaslo] = useState(1500);
-    const [login, setLogin] = useState(1500);
-    const [pothas, setPothas] = useState(1500);
+    const [imie, setImie] = useState();
+    const [nazwisko, setNazwisko] = useState();
+    const [email, setEmail] = useState();
+    const [haslo, setHaslo] = useState();
+    const [login, setLogin] = useState();
+    const [pothas, setPothas] = useState();
 
     function sendFrom(){
         axios.post("http://localhost:8080/uzytkownik/rejestracja", {
