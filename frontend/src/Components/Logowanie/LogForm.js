@@ -18,7 +18,7 @@ export default function LogForm(){
             if (response.data === 0) {
                 window.alert(("złe dane"))
             } else {
-                navigate("./")
+                navigate("/")
 
             }
         })
