@@ -4,12 +4,12 @@ import lombok.*;
 
 import javax.persistence.*;
 @Builder
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "uzytkownicy")
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class UzytkownikJPA {
 
     @Id
