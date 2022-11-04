@@ -1,6 +1,6 @@
 package com.minutowka.io6.Controllers;
 
-import com.minutowka.io6.DTO.Uzytkownicy;
+import com.minutowka.io6.DTO.Uzytkownik;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CookiesController {
 
     @PostMapping("/set-cookies")
-    public String setCookies(@RequestBody Uzytkownicy uzytkownik, HttpServletResponse response){
+    public String setCookies(@RequestBody Uzytkownik uzytkownik, HttpServletResponse response){
         Cookie cookie = new Cookie("userId", uzytkownik.getId().toString());
 
         response.addCookie(cookie);

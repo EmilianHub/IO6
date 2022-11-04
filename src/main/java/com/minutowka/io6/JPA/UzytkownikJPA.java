@@ -1,10 +1,13 @@
 package com.minutowka.io6.JPA;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 
 @Entity
+@Builder
 @Table(name = "uzytkownicy")
-public class UzytkownicyJPA {
+public class UzytkownikJPA {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,4 +21,8 @@ public class UzytkownicyJPA {
 
     @Column
     private String email;
+    @Column
+    private String haslo;
+    @Column
+    private String login;
 }

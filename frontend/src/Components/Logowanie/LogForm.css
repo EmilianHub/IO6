@@ -1,11 +1,11 @@
-.card
+.Card1
 {
     padding-top: 7%;
     background-color: grey;
-    height:100%;
+    height:100vh;
 }
 
-.button{
+.button1{
     margin: 10px 0 0 0;
     padding: 7px 10px;
     borderRadius: 3px;
@@ -15,26 +15,27 @@
     color: Black;
     display: block;
 }
-.button:hover{
+.button:hover1{
     cursor: pointer;
     background-color: chocolate;
 }
-.formStyle  {
+.formStyle1  {
     margin: 100px auto;
-    padding: 100px;
+    padding: 20px;
     border: 1px solid #c9c9c9;
     borderRadius: 5px;
     background: #4E4C4C;
     color:white;
+    width: 20%;
 
 }
-.labelStyle  {
+.labelStyle1  {
     fontFamily: Arial, Helvetica, sans-serif;
     fontSize: 15px;
 }
 
-.inputStyle  {
-
+.inputStyle1  {
+    width: 100%;
     border: 1px solid #bfbfbf;
 }
 

@@ -1,8 +1,8 @@
-.card
+.Card
 {
     padding-top: 7%;
     background-color: grey;
-    height:100%;
+    height:100vh;
 }
 
 .button{
@@ -26,6 +26,7 @@
     borderRadius: 5px;
     background: #4E4C4C;
     color:white;
+    width: 20%;
 
 }
 .labelStyle  {
@@ -34,7 +35,7 @@
 }
 
 .inputStyle  {
-
+    width: 100%;
     border: 1px solid #bfbfbf;
 }
 

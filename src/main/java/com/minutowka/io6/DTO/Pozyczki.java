@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Pozyczki {
     private Long id;
-    private Uzytkownicy uzytkownik;
+    private Uzytkownik uzytkownik;
     private Double kwotaPozyczki;
     private Double RRSO;
     private Double rata;

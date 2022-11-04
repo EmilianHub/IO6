@@ -7,8 +7,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class Uzytkownicy {
+public class Uzytkownik {
     private Long id;
     private String imie;
     private String nazwisko;
+    private String email;
+    private String haslo;
+    private String login;
 }

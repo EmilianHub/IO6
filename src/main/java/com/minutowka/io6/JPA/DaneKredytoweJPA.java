@@ -26,5 +26,5 @@ public class DaneKredytoweJPA {
 
     @OneToOne
     @JoinColumn(name = "id_uzyt")
-    private UzytkownicyJPA uzytkownik;
+    private UzytkownikJPA uzytkownik;
 }
