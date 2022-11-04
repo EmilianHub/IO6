@@ -1,0 +1,43 @@
+.card
+{
+    padding-top: 7%;
+    background-color: grey;
+    height:100%;
+}
+
+.button{
+    margin: 10px 0 0 0;
+    padding: 7px 10px;
+    borderRadius: 3px;
+    background: greenyellow;
+    width: 100%;
+    fontSize: 15px;
+    color: Black;
+    display: block;
+}
+.button:hover{
+    cursor: pointer;
+    background-color: chocolate;
+}
+.formStyle  {
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #c9c9c9;
+    borderRadius: 5px;
+    background: #4E4C4C;
+    color:white;
+
+}
+.labelStyle  {
+    fontFamily: Arial, Helvetica, sans-serif;
+    fontSize: 15px;
+}
+
+.inputStyle  {
+
+    border: 1px solid #bfbfbf;
+}
+
+
+
+
