@@ -1,18 +1,27 @@
 package com.minutowka.io6.JPA;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @Getter
 @Setter
+@Builder
 @Table(name = "dane_kredytowe")
+@AllArgsConstructor
+@NoArgsConstructor
 public class DaneKredytoweJPA {
 
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "nr_konta")
@@ -26,5 +35,5 @@ public class DaneKredytoweJPA {
 
     @OneToOne
     @JoinColumn(name = "id_uzyt")
-    private UzytkownicyJPA uzytkownik;
+    private UzytkownikJPA uzytkownikJPA;
 }

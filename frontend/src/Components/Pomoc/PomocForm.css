@@ -1,13 +1,12 @@
 .pomocny{
-    padding: 20px;
-
+    padding: 6% 3% 0 3%;
 }
-h2{
+.PomocH2{
     text-align: justify;
     text-decoration: none;
     font-weight: bold;
 }
-h3{
+.PomocH3{
     text-align: justify;
     text-decoration: none;
     font-weight: inherit;

@@ -5,8 +5,9 @@ import KontaktForm from "./Components/Kontakt/KontaktForm";
 import PomocForm from "./Components/Pomoc/PomocForm";
 import RegulaminForm from "./Components/Regulamin/RegulaminForm";
 import WarunkiForm from "./Components/Kontakt/Warunki";
-import NavBar from "./Components/NavBar/NavBar"
-
+import NavBar from "./Components/NavBar/NavBar";
+import RejForm from "./Components/Rejestracja/RejForm";
+import LogForm from "./Components/Logowanie/LogForm";
 function App() {
   return (
       <div className="App">
@@ -19,6 +20,8 @@ function App() {
                   <Route path={"/pomoc"} element={<PomocForm/>}/>
                   <Route path={"/regulamin"} element={<RegulaminForm/>}/>
                   <Route path={"/warunki"} element={<WarunkiForm/>}/>
+                  <Route path={"/Register"} element={<RejForm/>}/>
+                  <Route path={"/Login"} element={<LogForm/>}/>
               </Routes>
           </Router>
       </div>
