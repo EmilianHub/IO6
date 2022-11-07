@@ -59,7 +59,7 @@ export default function KredytForm(){
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option6" autoComplete="off" label="1700zł" value={1700} onChange={(v) => setKwota(v.target.value)}/>
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option7" autoComplete="off" label="2000zł" value={2000} onChange={(v) => setKwota(v.target.value)}/>
                     <br/>Czas trwania: 30 dni <br/>
-                    Rata: 1600 zł</h2>
+                    Rata: {kwota} zł</h2>
                     <h3 className={"KredytyH3"}><button className={"KredytyButton"} onClick={buildPozyczkiClass}>Weź pożyczkę</button></h3>
                 </div>
         </div>
