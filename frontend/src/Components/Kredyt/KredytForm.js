@@ -36,7 +36,7 @@ export default function KredytForm(){
         <div className={"gora"}>
             <h2 className={"KredytyH2"}>Pożyczka jakiej potrzebujesz w minutę</h2> <br/>
             <h2 className={"KredytyH2"}>Nawet do 2000 zł</h2> <br/>
-            <h2 className={"KredytyH2"}>RRSO: 0%</h2> <br/>
+            <h2 className={"KredytyH2"}>RRSO: 0%</h2>
         </div>
         <div className={"dol"}>
                 <div className={"tab"}>
@@ -49,8 +49,8 @@ export default function KredytForm(){
 
                 </div>
                 <div className={"tab1"}>
-                    <h1 className={"KredytyH1"}>Pożyczka:</h1>
-                    <h2 className={"KredytyH2"}>Podaj kwotę: <br/>
+                    <h1 className={"KredytyH1"}><span className={"kolorek"}>Pożyczka:</span></h1>
+                    <h2 className={"KredytyH2"}><span className={"kolorek"}>Podaj kwotę: </span><br/>
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option1" autoComplete="off" label="500zł" value={500} defaultChecked onChange={(v) => setKwota(v.target.value)}/>
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option2" autoComplete="off" label="700zł" value={700} onChange={(v) => setKwota(v.target.value)}/>
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option3" autoComplete="off" label="1000zł" value={1000} onChange={(v) => setKwota(v.target.value)}/>
@@ -58,8 +58,8 @@ export default function KredytForm(){
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option5" autoComplete="off" label="1500zł" value={1500} onChange={(v) => setKwota(v.target.value)}/>
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option6" autoComplete="off" label="1700zł" value={1700} onChange={(v) => setKwota(v.target.value)}/>
                     <CFormCheck button={{ color: 'secondary' }} type="radio" name="options-outlined" id="option7" autoComplete="off" label="2000zł" value={2000} onChange={(v) => setKwota(v.target.value)}/>
-                    <br/>Czas trwania: 30 dni <br/>
-                    Rata: {kwota} zł</h2>
+                        <br/><span className={"kolorek"}>Czas trwania: 30 dni </span><br/>
+                        <span className={"kolorek"}>Rata: {kwota} zł</span></h2>
                     <h3 className={"KredytyH3"}><button className={"KredytyButton"} onClick={buildPozyczkiClass}>Weź pożyczkę</button></h3>
                 </div>
         </div>

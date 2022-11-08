@@ -1,7 +1,9 @@
 .cont {
     padding-top: 7%;
-    background-color: grey;
-    height:100%;
+    background-image: url("tlo.jpg");
+    background-size: cover;
+    height:900px;
+
 }
 .gora .KredytyH1 {
     text-align: center;
@@ -14,6 +16,7 @@
     text-align: center;
     font-size: 45px;
     font-family: 'Times New Roman';
+    font-weight: bolder;
     box-shadow: 1px 2px 3px 4px rgba(0,0,0,0.75),
     2px 2px 1px 3px rgba(255,255,255,0.5);
     #text-shadow:2px 3px 0 grey;
@@ -63,9 +66,10 @@
     padding: 25px;
     font-weight: bold;
     text-align-all: center;
-    #background-color: cornsilk;
+    background-color: cornsilk;
     box-shadow: 1px 2px 3px 4px rgba(0,0,0,0.75),
     2px 2px 1px 3px rgba(255,255,255,0.5);
+
 }
 .tab .KredytyH1{
     text-align: center;
@@ -82,9 +86,12 @@
     weight: 50%;
     text-align: center;
     #float: right;
-    padding: 30px;
-    #background-color: cornsilk;
+    padding: 0px;
+    #background-color: grey;
     height: 380px;
+    #opacity: 80%;
+    box-shadow: 1px 2px 3px 4px rgba(0,0,0,0.75),
+    2px 2px 1px 3px rgba(255,255,255,0.5);
 
 
 }
@@ -100,6 +107,7 @@
     text-align: center;
     font-weight: bolder;
     color: yellow;
+    highlightme: grey;
 
 }
 .dol .KredytyH3{
@@ -112,7 +120,14 @@
 .dol .KredytyButton{
     border-radius: 30%;
     position: center;
-    padding: 12px 28px;
+    padding: 12px 18px;
     background-color: red;
     font-weight: bold;
+}
+.kolorek{
+    display: inline;
+    padding: 5px 0;
+    background: cornsilk;
+    color: black;
+    box-shadow: .5em 0 0 cornsilk, -.5em 0 0 cornsilk;
 }
