@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/uzytkownik", method = {RequestMethod.GET, RequestMethod.POST})
-@CrossOrigin(value = "http://localhost:3000/")
+@CrossOrigin(value = {"http://localhost:3000/", "http://192.168.178.254/"})
 public class UzytkownicyController {
     @Autowired
     private UzytkownikServices uzytkownikServices;

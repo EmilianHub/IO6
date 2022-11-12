@@ -5,6 +5,7 @@ import com.minutowka.io6.Exceptions.CustomExceptionBuilder;
 import com.minutowka.io6.JPA.DaneKredytoweJPA;
 import com.minutowka.io6.Repositories.DaneKredytoweRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -34,7 +35,7 @@ public class ZdolnoscKredytowaService {
 
     public String saveDaneKredytowe(Double wydatki, Double zarobki, Long userID) {
         DaneKredytoweJPA dbDaneKredytowe = daneKredytoweRepository.findByUzytkownikJPAId(userID)
-                .orElseThrow(() -> CustomExceptionBuilder.getCustomException("No entity found"));
+                .orElseThrow(() -> CustomExceptionBuilder.getCustomException(HttpStatus.BAD_REQUEST, "No entity found"));
 
         dbDaneKredytowe.setWydatki(wydatki);
         dbDaneKredytowe.setZarobki(zarobki);
