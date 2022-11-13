@@ -5,7 +5,6 @@ import com.minutowka.io6.Exceptions.CustomExceptionBuilder;
 import com.minutowka.io6.JPA.UzytkownikJPA;
 import com.minutowka.io6.Mappers.UzytkownikMapper;
 import com.minutowka.io6.Repositories.UzytkownikRepo;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.http.HttpStatus;
@@ -21,10 +20,10 @@ public class UzytkownikServices {
     private final String POSITIVE = "POSITIVE";
     private final UzytkownikRepo uzytkownikRepo;
     private final UzytkownikMapper uzytkownikMapper;
-    private final Pattern EMAIL_SYNTAX = Pattern.compile("[!#$%^&*()]");
+    private final Pattern EMAIL_SYNTAX = Pattern.compile("[/!#$%^&*()/]");
 
     public String saveUzytkownik(Uzytkownik rej){
-        veryfyEmailSyntax(rej.getEmail());
+        verifyLoginAndEmailPresence(rej);
 
         UzytkownikJPA uzytkownikREJ = uzytkownikMapper.toJPA(rej);
         uzytkownikRepo.save(uzytkownikREJ);
@@ -41,16 +40,17 @@ public class UzytkownikServices {
     }
 
     private void verifyLoginAndEmailPresence(Uzytkownik uzytkownik){
-        if(Strings.isBlank(uzytkownik.getEmail())){
+        if(Strings.isEmpty(uzytkownik.getEmail())){
             throw CustomExceptionBuilder.getCustomException(HttpStatus.BAD_REQUEST, "Email is empty");
         }
-        if(Strings.isBlank(uzytkownik.getLogin())){
+        if(Strings.isEmpty(uzytkownik.getLogin())){
             throw CustomExceptionBuilder.getCustomException(HttpStatus.BAD_REQUEST, "Login is empty");
         }
+        verifyEmailSyntax(uzytkownik.getEmail());
     }
 
-    private void veryfyEmailSyntax(String email){
-        if(EMAIL_SYNTAX.matcher(email).matches()){
+    private void verifyEmailSyntax(String email){
+        if(EMAIL_SYNTAX.matcher(email).find()){
             throw CustomExceptionBuilder.getCustomException(HttpStatus.BAD_REQUEST, "Wrong email syntax");
         }
     }
