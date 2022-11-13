@@ -34,17 +34,7 @@ export default function RejForm(){
     }
     const [messEm, setmessEm] = useState( false)
 
-    function wEmail(n){
-        if(!n){
-            setmessEm("(E-mail jest wymagany)")
-        }else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(n)) {
-            setmessEm("(Zły format adresu)")
-        }
-        else {
-            setEmail(n)
-            setmessEm (null)
-        }
-    }
+
 
     return(
         <div className="Card">
@@ -60,7 +50,7 @@ export default function RejForm(){
                 </div>
                 <div >
                     <label className={"labelStyle"} >Email:</label><br/>
-                    <input className={"inputStyle"} onChange={(v)=>wEmail(v.target.value)} />
+                    <input className={"inputStyle"} onChange={(v)=>setEmail(v.target.value)} />
                 </div>
                 <div>
 
