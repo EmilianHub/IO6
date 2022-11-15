@@ -1,11 +1,11 @@
 import React,{ useState } from "react";
 import axios from "axios";
 import "./LogForm.css"
+import {createNewCookie, readCookie} from "../CookiesManager/CookiesManager"
 import {useNavigate} from "react-router-dom";
 
 
 export default function LogForm(){
-
     let navigate = useNavigate();
     const [haslo, setHaslo] = useState();
     const [login, setLogin] = useState();
@@ -18,11 +18,12 @@ export default function LogForm(){
             if (response.data === 0) {
                 window.alert(("złe dane"))
             } else {
+                createNewCookie(response.data)
                 navigate("/")
-
             }
         })
     }
+
     return(
         <div className="Card1">
             <div  className={"formStyle1"} onSubmit={"handleSubmit"}>
@@ -39,6 +40,7 @@ export default function LogForm(){
                 </div>
 
                 <button className="button1"onClick={subForm}>Zaloguj</button>
+                <button className="button1"onClick={readCookie}>read</button>
             </div> </div>
 
 

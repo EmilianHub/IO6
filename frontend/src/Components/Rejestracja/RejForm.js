@@ -14,6 +14,7 @@ export default function RejForm(){
     const [pothas, setPothas] = useState();
 
     function sendFrom(){
+        clearAllErrors();
         axios.post("http://localhost:8080/uzytkownik/rejestracja", {
                 imie: imie,
                 nazwisko: nazwisko,
@@ -30,21 +31,29 @@ export default function RejForm(){
                 window.alert("wystąpił błąd :( .");
 
             }
+        }).catch((error) =>{
+            console.log(error.response.data.message)
+            setErrMess(error.response.data.message)
+            if (errMess.toString().includes("Login")){
+                setLoginMessage(errMess)
+            }else if (errMess.toString().includes("Email")){
+                setEmailMessage(errMess)
+            }else if (errMess.toString().includes("Hasło")){
+                setHasloMessage(errMess)
+            }
         })
     }
-    const [messEm, setmessEm] = useState( false)
 
-    function wEmail(n){
-        if(!n){
-            setmessEm("(E-mail jest wymagany)")
-        }else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(n)) {
-            setmessEm("(Zły format adresu)")
-        }
-        else {
-            setEmail(n)
-            setmessEm (null)
-        }
+    function clearAllErrors(){
+        setLoginMessage();
+        setHasloMessage();
+        setEmailMessage();
     }
+
+    const [loginMessage, setLoginMessage] = useState()
+    const [hasloMessage, setHasloMessage] = useState()
+    const [emailMessage, setEmailMessage] = useState()
+    const [errMess, setErrMess] = useState("")
 
     return(
         <div className="Card">
@@ -60,27 +69,25 @@ export default function RejForm(){
                 </div>
                 <div >
                     <label className={"labelStyle"} >Email:</label><br/>
-                    <input className={"inputStyle"} onChange={(v)=>wEmail(v.target.value)} />
+                    <input className={"inputStyle"} onChange={(v)=>setEmail(v.target.value)} />
+                    {emailMessage && <p className={"errorLabel"}> {emailMessage} </p>}
                 </div>
                 <div>
 
                     <label className={"labelStyle"}>Login:</label><br/>
                     <input className={"inputStyle"}onChange={(v)=>setLogin(v.target.value)}  /><br/>
+                    {loginMessage && <p className={"errorLabel"}> {loginMessage} </p>}
                 </div>
 
                 <div >
                     <label className={"labelStyle"}>Hasło:</label><br/>
                     <input type="password" className={"inputStyle"}onChange={(v)=>setHaslo(v.target.value)} /><br/>
-
+                    {hasloMessage && <p className={"errorLabel"}> {hasloMessage} </p>}
                 </div>
                 <div >
                     <label className={"labelStyle"}>Potwierdź hasło:</label><br/>
                     <input type="password" className={"inputStyle"}onChange={(v)=>setPothas(v.target.value)}/><br/>
-
-
                 </div>
-
-
                 <button className="button" onClick={sendFrom}>Zarejestruj</button>
             </div> </div>
 

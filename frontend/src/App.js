@@ -14,6 +14,7 @@ function App() {
           <Router>
               <NavBar/>
               <Routes>
+                  <Route path="/" exact element/>
                   <Route path={"/formularz-zdolnosci-kredytowej"} element={<ZdolnoscKredFrom/>}/>
                   <Route path={"/strona-wez-kredyt"} element={<KredytForm/>}/>
                   <Route path={"/kontakt"} element={<KontaktForm/>}/>
