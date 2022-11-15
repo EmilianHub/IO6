@@ -3,12 +3,12 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import "./ZdolnoscKredForm.css"
 import {useLocation} from "react-router-dom";
+import {readCookie} from "../CookiesManager/CookiesManager"
 
 export default function ZdolnoscKredForm(){
     let navigate = useNavigate();
     const { state } = useLocation();
-    console.log(state)
-
+    const userId = readCookie();
     const [zarobki, setZarobki] = useState(3000);
     const [raty, setRaty] = useState(0);
     const [wydatki, setWydaki] = useState(1500);
@@ -17,7 +17,9 @@ export default function ZdolnoscKredForm(){
         axios.post("http://localhost:8080/zdolnosc-kredytowa/process", {
                 kwotaPozyczki: parseFloat(state.kwota),
                 poczatekPozyczki: state.rozpoczecie,
-                zakonczeniePozyczki: state.zakonczenie
+                zakonczeniePozyczki: state.zakonczenie,
+                rrso: parseFloat(state.rrso),
+                uzytkownik: parseFloat(userId)
             }, {
             params:{
                 wydatki,

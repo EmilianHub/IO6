@@ -8,6 +8,7 @@ import WarunkiForm from "./Components/Kontakt/Warunki";
 import NavBar from "./Components/NavBar/NavBar";
 import RejForm from "./Components/Rejestracja/RejForm";
 import LogForm from "./Components/Logowanie/LogForm";
+import ProfilForm from "./Components/Profil/ProfilForm";
 function App() {
   return (
       <div className="App">
@@ -23,6 +24,7 @@ function App() {
                   <Route path={"/warunki"} element={<WarunkiForm/>}/>
                   <Route path={"/Register"} element={<RejForm/>}/>
                   <Route path={"/Login"} element={<LogForm/>}/>
+                  <Route path={"/profil"} element={<ProfilForm/>}/>
               </Routes>
           </Router>
       </div>

@@ -15,7 +15,8 @@ import {format} from "date-fns";
 export default function KredytForm(){
     let navigate = useNavigate();
     const[kwota, setKwota] = useState(500);
-    const[czas, setCzas] = useState(12);
+    const[czas, setCzas] = useState(1);
+    const[rrso, setRrso] = useState(0);
     console.log(kwota)
 
     function buildPozyczkiClass(){
@@ -25,8 +26,9 @@ export default function KredytForm(){
         navigate("/formularz-zdolnosci-kredytowej", {
             state: {
                 kwota: kwota.toString(),
-                rozpoczecie: format(rozpoczecie, 'yyyy-dd-MM HH:mm:ss').toString(),
-                zakonczenie: format(zakonczenie, 'yyyy-dd-MM HH:mm:ss').toString(),
+                rozpoczecie: format(rozpoczecie, 'yyyy-MM-dd HH:mm:ss').toString(),
+                zakonczenie: format(zakonczenie, 'yyyy-MM-dd HH:mm:ss').toString(),
+                rrso: rrso.toString()
             }
         });
     }
