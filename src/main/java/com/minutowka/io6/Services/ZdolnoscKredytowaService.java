@@ -13,7 +13,6 @@ import java.time.Duration;
 @RequiredArgsConstructor
 public class ZdolnoscKredytowaService {
     private final DaneKredytoweRepository daneKredytoweRepository;
-
     private final static String POSITIVE_RESPONSE_MESSAGE = "Dane kredytowe zostały zapisane poprwanie";
     private final static String POSITIVE_RESPONSE = "POSITIVE";
     private final static String NEGATIVE_RESPONSE = "NEGATIVE";
