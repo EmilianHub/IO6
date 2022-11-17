@@ -24,11 +24,11 @@ public class UzytkownikMapper {
     public static Uzytkownik toDTO(UzytkownikJPA uzytkownikJPA){
         return Uzytkownik.builder()
                 .id(uzytkownikJPA.getId())
-                .nazwisko(uzytkownikJPA.getNazwisko())
                 .email(uzytkownikJPA.getEmail())
                 .haslo(uzytkownikJPA.getHaslo())
-                .email(uzytkownikJPA.getEmail())
+                .imie(uzytkownikJPA.getImie())
                 .login(uzytkownikJPA.getLogin())
+                .nazwisko(uzytkownikJPA.getNazwisko())
                 .build();
     }
 }

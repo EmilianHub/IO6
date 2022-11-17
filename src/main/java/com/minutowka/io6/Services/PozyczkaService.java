@@ -11,6 +11,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class PozyczkaService {
@@ -35,5 +38,11 @@ public class PozyczkaService {
     private double obliczRate(Pozyczki pozyczki, Long okresSplaty){
         Double kwotaZrrso = pozyczki.getKwotaPozyczki() * pozyczki.getRrso();
         return Math.floorDiv(pozyczki.getKwotaPozyczki(), okresSplaty)+kwotaZrrso;
+    }
+
+    public Collection<Pozyczki> findPozyczkiWithUserId(Long id){
+        Collection<PozyczkiJPA> pozyczkiJPA = pozyczkaRepo.findAllByUzytkownikId(id);
+
+        return pozyczkiJPA.stream().map(PozyczkaMapper::toDTO).collect(Collectors.toList());
     }
 }
