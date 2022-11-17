@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {useNavigate, useLocation} from "react-router-dom";
-import "./ZdolnoscKredForm.css"
 import {readCookie} from "../CookiesManager/CookiesManager"
 
 export default function ZdolnoscKredForm(){
@@ -13,31 +12,7 @@ export default function ZdolnoscKredForm(){
     const [wydatki, setWydaki] = useState(1500);
 
     function sendFrom(){
-        axios.post("http://localhost:8080/zdolnosc-kredytowa/process", {
-                kwotaPozyczki: parseFloat(state.kwota),
-                poczatekPozyczki: state.rozpoczecie,
-                zakonczeniePozyczki: state.zakonczenie,
-                rrso: parseFloat(state.rrso),
-                uzytkownik: parseFloat(userId)
-            }, {
-            params:{
-                wydatki,
-                raty,
-                zarobki
-            }}
-        ).then((response) => {
-            console.log(response.data)
-            if(response.data==="POSITIVE"){
-                window.alert("Twoja zdolność kredytowa została rozpatrzona pomyślnie. Pożyczka została przyznana.");
-                navigate('/kredyt-podsumowanie', {
-                    state: {
-                    }
-                });
-            }else{
-                window.alert("Twoja zdolność kredytowa została rozpatrzona negatywnie. Zmień warunki kredytowe.");
-                navigate('/strona-wez-kredyt');
-            }
-        })
+
     }
 
     return(
@@ -45,7 +20,7 @@ export default function ZdolnoscKredForm(){
             <div className={"Opis"}>
                 <h2>Formularz określający zdolność kredytową</h2>
                 <p>Poprzez wypełnienie formularza, zostanie wyliczona maksymalna kwota pożczyki. Pamiętaj aby dane podawać zgodnie z prawdą.
-                Dane nie zostaną nigdzie udostępnione.</p>
+                    Dane nie zostaną nigdzie udostępnione.</p>
             </div>
             <div>
                 <h2>Przychody i koszty utrzymania</h2>

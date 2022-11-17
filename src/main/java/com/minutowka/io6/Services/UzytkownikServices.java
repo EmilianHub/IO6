@@ -19,13 +19,12 @@ public class UzytkownikServices {
 
     private final String POSITIVE = "POSITIVE";
     private final UzytkownikRepo uzytkownikRepo;
-    private final UzytkownikMapper uzytkownikMapper;
     private final Pattern EMAIL_SYNTAX = Pattern.compile("[/!#$%^&*()/]");
 
     public String saveUzytkownik(Uzytkownik rej){
         verifyLoginAndEmailPresence(rej);
 
-        UzytkownikJPA uzytkownikREJ = uzytkownikMapper.toJPA(rej);
+        UzytkownikJPA uzytkownikREJ = UzytkownikMapper.toJPA(rej);
         uzytkownikRepo.save(uzytkownikREJ);
 
         return POSITIVE;
