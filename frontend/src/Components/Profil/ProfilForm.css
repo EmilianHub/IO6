@@ -1,15 +1,9 @@
-.profilCont{
+.ProfilCont{
     padding-top: 7%;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    -webkit-transition: padding .2s;
-    transition: padding .2s;
-    padding-left: 16px;
-    padding-right: 16px;
     max-width: 800px;
     text-align: center;
-
+    margin-left: 14%;
 }
 .profilH1{
     font-weight: bold;
@@ -19,6 +13,7 @@
     flex-direction: row;
     width: 100%;
     justify-content: center;
+    margin-left: 14%;
 }
 .cth{
     font-size: 32px;

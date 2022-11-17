@@ -20,4 +20,15 @@ public class UzytkownikMapper {
                 .id(uzytkownik.getId())
                 .build();
     }
+
+    public static Uzytkownik toDTO(UzytkownikJPA uzytkownikJPA){
+        return Uzytkownik.builder()
+                .id(uzytkownikJPA.getId())
+                .email(uzytkownikJPA.getEmail())
+                .haslo(uzytkownikJPA.getHaslo())
+                .imie(uzytkownikJPA.getImie())
+                .login(uzytkownikJPA.getLogin())
+                .nazwisko(uzytkownikJPA.getNazwisko())
+                .build();
+    }
 }

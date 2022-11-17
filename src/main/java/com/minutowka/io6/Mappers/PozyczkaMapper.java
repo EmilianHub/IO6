@@ -20,4 +20,16 @@ public class PozyczkaMapper {
                 .uzytkownik(uzytkownikJPA)
                 .build();
     }
+
+    public static Pozyczki toDTO(PozyczkiJPA pozyczkiJPA){
+        return Pozyczki.builder()
+                .id(pozyczkiJPA.getId())
+                .kwotaPozyczki(pozyczkiJPA.getKwota())
+                .rata(pozyczkiJPA.getRata())
+                .rrso(pozyczkiJPA.getRrso())
+                .dataZaciagnieciaPozyczki(pozyczkiJPA.getData_konca())
+                .dataZakonczeniaPozyczki(pozyczkiJPA.getData_konca())
+                .uzytkownik(UzytkownikMapper.toDTO(pozyczkiJPA.getUzytkownik()))
+                .build();
+    }
 }
