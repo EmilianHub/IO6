@@ -36,7 +36,7 @@ export default function KredytForm(){
     return(
     <div className={"cont"}>
         <div className={"gora"}>
-            <h2 className={"KredytyH2"}>Pożyczka jakiej potrzebujesz w minutę</h2> <br/>
+            <h2 className={"KredytyH2"}>Pożyczka jakiej potrzebujesz w minutę!</h2> <br/>
             <h2 className={"KredytyH2"}>Nawet do 2000 zł</h2> <br/>
             <h2 className={"KredytyH2"}>RRSO: 0%</h2>
         </div>

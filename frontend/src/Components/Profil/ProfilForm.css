@@ -4,6 +4,11 @@
     max-width: 800px;
     text-align: center;
     margin-left: 14%;
+
+}
+.cala{
+    background-color: #FFEBCD;
+    height: 910px;
 }
 .profilH1{
     font-weight: bold;
@@ -39,6 +44,7 @@
     margin: 4px;
     font-weight: 600;
     background: #bfbfbf;
+
 }
 .td-butn{
     font-family: sans-serif;
@@ -61,8 +67,8 @@
     padding: 1rem 1rem;
     cursor: pointer;
     background: greenyellow;
-    border: 0;
-    border-radius: 0.2rem;
+    border: 1px dotted;
+    border-radius: 0.2rem ;
     font-size: 1.6rem;
     font-weight: bold;
     transition: 0.3s background-color;
