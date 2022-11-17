@@ -13,22 +13,33 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "pozyczki")
-public class PozyczkiJPA {
+@Table(name = "pozyczka")
+public class PozyczkaJPA {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Version
+    private LocalDateTime version;
+
     @Column
     private Long kwota;
+
     @Column
     private Double rrso;
+
     @Column
     private Long rata;
+
     @Column
     private LocalDateTime data_pobrania;
+
     @Column
     private LocalDateTime data_konca;
+
+    @Column
+    private boolean active;
 
     @ManyToOne
     @JoinColumn(name = "id_u")

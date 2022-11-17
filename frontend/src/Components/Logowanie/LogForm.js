@@ -20,6 +20,7 @@ export default function LogForm(){
             } else {
                 createNewCookie(response.data)
                 navigate("/")
+                window.location.reload(false)
             }
         })
     }

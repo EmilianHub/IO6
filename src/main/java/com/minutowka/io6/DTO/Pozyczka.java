@@ -2,6 +2,7 @@ package com.minutowka.io6.DTO;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.minutowka.io6.Mappers.UzytkownikMapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @AllArgsConstructor
-public class Pozyczki {
+public class Pozyczka {
     private Long id;
     private Uzytkownik uzytkownik;
     private Long kwotaPozyczki;
@@ -22,22 +23,20 @@ public class Pozyczki {
     private LocalDateTime dataZaciagnieciaPozyczki;
     private LocalDateTime dataZakonczeniaPozyczki;
 
+    private boolean active;
+
+    private LocalDateTime version;
+
     @JsonCreator
-    public Pozyczki(@JsonProperty("uzytkownik") Long uzytkownik, @JsonProperty("poczatekPozyczki") String rozpoczecie,
+    public Pozyczka(@JsonProperty("uzytkownik") Long uzytkownik, @JsonProperty("poczatekPozyczki") String rozpoczecie,
                     @JsonProperty("zakonczeniePozyczki") String zakonczenie){
         this.dataZaciagnieciaPozyczki = convertToLocalDateTime(rozpoczecie);
         this.dataZakonczeniaPozyczki = convertToLocalDateTime(zakonczenie);
-        this.uzytkownik = buildSimpleUzytkownik(uzytkownik);
+        this.uzytkownik = UzytkownikMapper.buildSimpleUzytkownik(uzytkownik);
     }
 
     private LocalDateTime convertToLocalDateTime(String date){
         date = date.replaceAll(" ", "T");
         return LocalDateTime.parse(date);
-    }
-
-    private Uzytkownik buildSimpleUzytkownik(Long userId){
-        return Uzytkownik.builder()
-                .id(userId)
-                .build();
     }
 }

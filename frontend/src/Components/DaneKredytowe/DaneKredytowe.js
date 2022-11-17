@@ -2,47 +2,66 @@ import React, {useState} from "react";
 import axios from "axios";
 import {useNavigate, useLocation} from "react-router-dom";
 import {readCookie} from "../CookiesManager/CookiesManager"
+import "./DaneKredytowe.css"
+import DoneIcon from '@mui/icons-material/Done';
 
-export default function ZdolnoscKredForm(){
+export default function DaneKredytowe() {
     let navigate = useNavigate();
-    const { state } = useLocation();
+    const {state} = useLocation();
     const userId = readCookie();
-    const [zarobki, setZarobki] = useState(3000);
-    const [raty, setRaty] = useState(0);
-    const [wydatki, setWydaki] = useState(1500);
+    const [nrKonta, setNrKonta] = useState("");
+    const [errMes, setErrMess] = useState("");
+    const [errLabel, setErrLabel] = useState(false);
 
-    function sendFrom(){
+    function sendFrom() {
+        setErrLabel(false);
+        axios.post("http://localhost:8080/zdolnosc-kredytowa/daneKredytowe", {
+            nrKonta: nrKonta.toString(),
+            zarobki: state.zarobki,
+            wydatki: state.wydatki,
+            uzytkownik: parseFloat(userId)
+        }).then((response) => {
+            window.alert("Proces udzielania pożyczki zakończony pomyślnie");
+            navigate("/profil")
+        }).catch(err => {
+            setErrMess(err.response.data.message);
+            if (errMes.toString().includes("Numer")) {
+                setErrLabel(true);
+            } else {
+                window.alert("Wystąpił błąd, proszę spróbować ponownie")
+            }
+        });
+    }
 
+    function sliceInput(accNumber){
+        if (!accNumber) {
+            return setNrKonta();
+        }
+        setNrKonta(accNumber);
+        const accNumberL = accNumber.length;
+        if (accNumberL > 4) {
+            setNrKonta(`PL ${accNumber.slice(0, 4)} ${accNumber.slice(4, accNumberL)}`);
+        }
+        if (accNumberL > 8) {
+            setNrKonta(`PL ${accNumber.slice(0, 4)} ${accNumber.slice(4, 8)} ${accNumber.slice(8, accNumberL)}`);
+        }
+        if (accNumberL >= 12) {
+            setNrKonta(`PL ${accNumber.slice(0, 4)} ${accNumber.slice(4, 8)} ${accNumber.slice(8, 12)} ${accNumber.slice(12, accNumberL)}`);
+        }
+        return nrKonta;
     }
 
     return(
-        <div className={"Formularz"}>
-            <div className={"Opis"}>
-                <h2>Formularz określający zdolność kredytową</h2>
-                <p>Poprzez wypełnienie formularza, zostanie wyliczona maksymalna kwota pożczyki. Pamiętaj aby dane podawać zgodnie z prawdą.
-                    Dane nie zostaną nigdzie udostępnione.</p>
+        <div className={"DaneKred"}>
+            <div className={"OpisKred"}>
+                <h2>Do sfinalizowania kredytu proszę podać nr konta bankowego, na które mają zostać przelane środki.</h2>
             </div>
             <div>
-                <h2>Przychody i koszty utrzymania</h2>
-                <div className={"Kontyner"}>
-                    <fieldset>
-                        <label className={"DochodLabel"}>Dochód netto</label>
-                        <input className={"DochodInput"} type={"text"}
-                               defaultValue={zarobki} onChange={(value) => setZarobki(value.target.value)}/>
-                        <div className={"Desc"}>Kwota na rękę bez podatku</div>
-                    </fieldset>
-                    <fieldset>
-                        <label className={"DochodLabel"}>Suma rat innych kredytów</label>
-                        <input className={"DochodInput"} type={"text"} defaultValue={raty} onChange={(value) => setRaty(value.target.value)}/>
-                        <div className={"Desc"}>Pole nieobowiązkowe</div>
-                    </fieldset>
-                    <fieldset>
-                        <label className={"DochodLabel"}>Suma kosztów utrzymania</label>
-                        <input className={"DochodInput"} type={"text"} defaultValue={wydatki} onChange={(value) => setWydaki(value.target.value)}/>
-                        <div className={"Desc"}>Np. czynsz, zakupy</div>
-                    </fieldset>
+                <div className={"KontynerKred"}>
+                    <input className={"KredInput"} onChange={(v) => sliceInput(v.target.value)} placeholder={"1233 6354 0000 1112"} maxLength={16}/>
+                    <button className={"SubmitButton"} onClick={sendFrom}><DoneIcon/></button>
                 </div>
-                <button className={"SubmitButton"} onClick={sendFrom}>Oblicz</button>
+                {errLabel && <p className={"ErrorKred"}>{errMes}</p>}
             </div>
         </div>
     )

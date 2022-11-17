@@ -8,3 +8,7 @@ export function createNewCookie(userId){
 export function readCookie(){
     return cookie.get("userId");
 }
+
+export function deleteCookies(){
+    return cookie.remove("userId")
+}

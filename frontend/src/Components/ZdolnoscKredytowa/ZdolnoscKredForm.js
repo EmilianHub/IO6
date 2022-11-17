@@ -31,6 +31,8 @@ export default function ZdolnoscKredForm(){
                 window.alert("Twoja zdolność kredytowa została rozpatrzona pomyślnie. Pożyczka została przyznana.");
                 navigate('/kredyt-podsumowanie', {
                     state: {
+                        wydatki: wydatki.toString(),
+                        zarobki: zarobki.toString()
                     }
                 });
             }else{

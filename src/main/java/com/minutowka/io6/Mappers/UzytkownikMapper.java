@@ -31,4 +31,10 @@ public class UzytkownikMapper {
                 .nazwisko(uzytkownikJPA.getNazwisko())
                 .build();
     }
+
+    public static Uzytkownik buildSimpleUzytkownik(Long userId){
+        return Uzytkownik.builder()
+                .id(userId)
+                .build();
+    }
 }

@@ -1,8 +1,8 @@
 package com.minutowka.io6.Services;
 
-import com.minutowka.io6.DTO.Pozyczki;
+import com.minutowka.io6.DTO.Pozyczka;
 import com.minutowka.io6.Exceptions.CustomExceptionBuilder;
-import com.minutowka.io6.JPA.PozyczkiJPA;
+import com.minutowka.io6.JPA.PozyczkaJPA;
 import com.minutowka.io6.JPA.UzytkownikJPA;
 import com.minutowka.io6.Mappers.PozyczkaMapper;
 import com.minutowka.io6.Repositories.PozyczkaRepo;
@@ -23,26 +23,29 @@ public class PozyczkaService {
     private final PozyczkaMapper pozyczkaMapper;
     private final PozyczkaRepo pozyczkaRepo;
 
-    public String savePozyczka(Pozyczki pozyczki, Long okresSplaty){
-        UzytkownikJPA uzytkownikJPA = uzytkownikRepo.findById(pozyczki.getUzytkownik().getId())
+    public String savePozyczka(Pozyczka pozyczka, Long okresSplaty){
+        UzytkownikJPA uzytkownikJPA = uzytkownikRepo.findById(pozyczka.getUzytkownik().getId())
                 .orElseThrow(() -> CustomExceptionBuilder.getCustomException(HttpStatus.BAD_REQUEST, "Uzytkownik nie istnieje"));
 
-        Long rata = (long) obliczRate(pozyczki, okresSplaty);
-        pozyczki.setRata(rata);
-        PozyczkiJPA pozyczkiJPA = pozyczkaMapper.toJPA(pozyczki, uzytkownikJPA);
+        Long rata = (long) obliczRate(pozyczka, okresSplaty);
 
-        pozyczkaRepo.save(pozyczkiJPA);
+        pozyczka.setRata(rata);
+        pozyczka.setActive(true);
+
+        PozyczkaJPA pozyczkaJPA = pozyczkaMapper.toJPA(pozyczka, uzytkownikJPA);
+
+        pozyczkaRepo.save(pozyczkaJPA);
         return POSITIVE_RESPONSE;
     }
 
-    private double obliczRate(Pozyczki pozyczki, Long okresSplaty){
-        Double kwotaZrrso = pozyczki.getKwotaPozyczki() * pozyczki.getRrso();
-        return Math.floorDiv(pozyczki.getKwotaPozyczki(), okresSplaty)+kwotaZrrso;
+    private double obliczRate(Pozyczka pozyczka, Long okresSplaty){
+        Double kwotaZrrso = pozyczka.getKwotaPozyczki() * pozyczka.getRrso();
+        return Math.floorDiv(pozyczka.getKwotaPozyczki(), okresSplaty)+kwotaZrrso;
     }
 
-    public Collection<Pozyczki> findPozyczkiWithUserId(Long id){
-        Collection<PozyczkiJPA> pozyczkiJPA = pozyczkaRepo.findAllByUzytkownikId(id);
+    public Collection<Pozyczka> findPozyczkiWithUserId(Long id){
+        Collection<PozyczkaJPA> pozyczkaJPA = pozyczkaRepo.findAllByUzytkownikId(id);
 
-        return pozyczkiJPA.stream().map(PozyczkaMapper::toDTO).collect(Collectors.toList());
+        return pozyczkaJPA.stream().map(PozyczkaMapper::toDTO).collect(Collectors.toList());
     }
 }

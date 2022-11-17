@@ -9,6 +9,9 @@ import NavBar from "./Components/NavBar/NavBar";
 import RejForm from "./Components/Rejestracja/RejForm";
 import LogForm from "./Components/Logowanie/LogForm";
 import ProfilForm from "./Components/Profil/ProfilForm";
+import DaneKredytowe from "./Components/DaneKredytowe/DaneKredytowe"
+import Logout from "./Components/Logout"
+
 function App() {
   return (
       <div className="App">
@@ -25,6 +28,8 @@ function App() {
                   <Route path={"/Register"} element={<RejForm/>}/>
                   <Route path={"/Login"} element={<LogForm/>}/>
                   <Route path={"/profil"} element={<ProfilForm/>}/>
+                  <Route path={"/kredyt-podsumowanie"} element={<DaneKredytowe/>}/>
+                  <Route path={"/Logout"} element={<Logout/>}/>
               </Routes>
           </Router>
       </div>

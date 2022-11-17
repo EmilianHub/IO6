@@ -1,17 +1,12 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import "./ProfilForm.css";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {readCookie} from "../CookiesManager/CookiesManager";
 export default function ProfilForm(){
 
     let navigate = useNavigate();
-    const { state } = useLocation();
     const userId = readCookie();
-    const [dataPobrania, setDataPobrania] = useState("");
-    const [dataKonca, setDataKonca]= useState("");
-    const [kwota, setKwota]= useState("");
-    const [rata, setRata]= useState("");
     const [pozyczki, setPozyczki]= useState([]);
 
     function Dane(){
@@ -24,6 +19,8 @@ export default function ProfilForm(){
     useEffect(()=> {
         Dane();
     },[])
+
+    console.log(pozyczki)
     return(
 
         <table className={"ProfilCont"}>
@@ -47,8 +44,8 @@ export default function ProfilForm(){
                 <td className={"ctd"}> {value.kwotaPozyczki}</td>
                 <td className={"ctd"}> {value.dataZakonczeniaPozyczki}</td>
                 <td className={"ctd"}> {value.rata}</td>
-                <td className={"ctd"}> Aktywna</td>
-                <td className={"ctd"}> <button className={"td-butn"}>Spłać</button></td>
+                <td className={"ctd"}> {value.active ? "Aktywna" : "Splacona"}</td>
+                <td className={"ctd"}> <button className={"td-butn"} disabled={!value.active} onClick={() => navigate(`/splata/${value.id}`)}>Spłać</button></td>
             </tr>
         })}
 

@@ -1,7 +1,7 @@
 package com.minutowka.io6.Mappers;
 
-import com.minutowka.io6.DTO.Pozyczki;
-import com.minutowka.io6.JPA.PozyczkiJPA;
+import com.minutowka.io6.DTO.Pozyczka;
+import com.minutowka.io6.JPA.PozyczkaJPA;
 import com.minutowka.io6.JPA.UzytkownikJPA;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -9,27 +9,31 @@ import org.springframework.stereotype.Service;
 @Service
 @NoArgsConstructor
 public class PozyczkaMapper {
-    public static PozyczkiJPA toJPA(Pozyczki pozyczki, UzytkownikJPA uzytkownikJPA){
-        return PozyczkiJPA.builder()
-                .id(pozyczki.getId())
-                .data_konca(pozyczki.getDataZakonczeniaPozyczki())
-                .data_pobrania(pozyczki.getDataZaciagnieciaPozyczki())
-                .kwota(pozyczki.getKwotaPozyczki())
-                .rata(pozyczki.getRata())
-                .rrso(pozyczki.getRrso())
+    public static PozyczkaJPA toJPA(Pozyczka pozyczka, UzytkownikJPA uzytkownikJPA){
+        return PozyczkaJPA.builder()
+                .id(pozyczka.getId())
+                .version(pozyczka.getVersion())
+                .data_konca(pozyczka.getDataZakonczeniaPozyczki())
+                .data_pobrania(pozyczka.getDataZaciagnieciaPozyczki())
+                .kwota(pozyczka.getKwotaPozyczki())
+                .rata(pozyczka.getRata())
+                .rrso(pozyczka.getRrso())
                 .uzytkownik(uzytkownikJPA)
+                .active(pozyczka.isActive())
                 .build();
     }
 
-    public static Pozyczki toDTO(PozyczkiJPA pozyczkiJPA){
-        return Pozyczki.builder()
-                .id(pozyczkiJPA.getId())
-                .kwotaPozyczki(pozyczkiJPA.getKwota())
-                .rata(pozyczkiJPA.getRata())
-                .rrso(pozyczkiJPA.getRrso())
-                .dataZaciagnieciaPozyczki(pozyczkiJPA.getData_konca())
-                .dataZakonczeniaPozyczki(pozyczkiJPA.getData_konca())
-                .uzytkownik(UzytkownikMapper.toDTO(pozyczkiJPA.getUzytkownik()))
+    public static Pozyczka toDTO(PozyczkaJPA pozyczkaJPA){
+        return Pozyczka.builder()
+                .id(pozyczkaJPA.getId())
+                .version(pozyczkaJPA.getVersion())
+                .kwotaPozyczki(pozyczkaJPA.getKwota())
+                .rata(pozyczkaJPA.getRata())
+                .rrso(pozyczkaJPA.getRrso())
+                .dataZaciagnieciaPozyczki(pozyczkaJPA.getData_konca())
+                .dataZakonczeniaPozyczki(pozyczkaJPA.getData_konca())
+                .uzytkownik(UzytkownikMapper.toDTO(pozyczkaJPA.getUzytkownik()))
+                .active(pozyczkaJPA.isActive())
                 .build();
     }
 }

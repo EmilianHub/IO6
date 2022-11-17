@@ -5,6 +5,9 @@ import Loan from '@mui/icons-material/CreditScore';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import HelpIcon from '@mui/icons-material/Help';
 import ReceiptIcon from '@mui/icons-material/Receipt';
+import LogoutIcon from '@mui/icons-material/Logout';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
 export const NavBarData = [
     {
@@ -41,5 +44,48 @@ export const NavBarData = [
         name: "Rejestracja",
         img: <Register/>,
         link: "/Register"
+    }
+];
+
+export const NavBarDataUser = [
+    {
+        name: "Strona Główna",
+        img: <HomeIcon/>,
+        link: "/"
+    },
+    {
+        name: "Pożyczki",
+        img: <Loan/>,
+        link: "/strona-wez-kredyt",
+    },
+    {
+        name: "Kontakt",
+        img: <ContactsIcon/>,
+        link: "/kontakt",
+    },
+    {
+        name: "Pomoc",
+        img: <HelpIcon/>,
+        link: "/pomoc",
+    },
+    {
+        name: "Regulamin",
+        img: <ReceiptIcon/>,
+        link: "/regulamin",
+    },
+    {
+        name: "Moje pozyczki",
+        img: <MonetizationOnIcon/>,
+        link: "/Profil"
+    },
+    {
+        name: "Moj profil",
+        img: <AccountCircleIcon/>,
+        link: "/Profil"
+    },
+    {
+        name: "Logout",
+        img: <LogoutIcon/>,
+        link: "/Logout"
     }
 ];
