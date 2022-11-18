@@ -11,6 +11,7 @@ import LogForm from "./Components/Logowanie/LogForm";
 import ProfilForm from "./Components/Profil/ProfilForm";
 import DaneKredytowe from "./Components/DaneKredytowe/DaneKredytowe"
 import Logout from "./Components/Logout"
+import PanelUzyForm from "./Components/PanelUzyForm/PanelUzyFomr"
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
                   <Route path={"/profil"} element={<ProfilForm/>}/>
                   <Route path={"/kredyt-podsumowanie"} element={<DaneKredytowe/>}/>
                   <Route path={"/Logout"} element={<Logout/>}/>
+                  <Route path={"/PanelUzy"} element={<PanelUzyForm/>}/>
               </Routes>
           </Router>
       </div>
