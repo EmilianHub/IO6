@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -35,6 +36,11 @@ public class DanePVService {
         if (Objects.isNull(danePV.getPesel())){
             throw CustomExceptionBuilder.getCustomException(HttpStatus.BAD_REQUEST,"Pesel nie moze byc pusty jak piotr sz.");
         }
+    }
+
+    public DanePV findDane(Long id) {
+        DanePVJPA danePVJPA = danePVRepo.findByUzytkownikId(id);
+        return DanePVMapper.toDTO(danePVJPA);
     }
 }
 

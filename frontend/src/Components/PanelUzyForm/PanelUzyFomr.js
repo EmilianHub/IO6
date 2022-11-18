@@ -9,10 +9,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import {readCookie} from "../CookiesManager/CookiesManager";
 
-export default function Useredd({userID}){
-    Axios.defaults.withCredentials = true;
-    const UserID = userID;
+export default function Useredd(){
+
+    const UserID = readCookie();
     const [ShowUseres, setShowUseres] = useState([]);
     const [isEdited, setisEdited] = useState(false);
     const [Imie, setImie] = useState("");
@@ -44,19 +45,19 @@ export default function Useredd({userID}){
     }
 
     function Save() {
-        Axios.put('http://localhost:8080/UpdateDanePV', {
-            id: SelectedID,
-            imie: Imie,
-            nazwisko: Nazwisko,
-            login: Login,
-            haslo: Haslo,
-            email: Email,
-            pesel: Pensja,
-            nrDowodu: NrDowodu,
-        }).then((response)=> {
-            if(response.data.message === "OK") {
-
-                setisEdited(false);
+        Axios.post('http://localhost:8080/UpdateDanePV', {
+            nrDowodu: NrDowodu.toString(),
+            pesel: Pesel.toString(),
+            uzytkownik:{
+                id:parseFloat(UserID),
+                imie: Imie.toString(),
+                nazwisko: Nazwisko.toString(),
+                email: Email.toString(),
+                login: Login.toString(),
+            }
+        }).then((response)=>{
+            if(response){
+                setShowUseres(response.data)
             }
         })
     }
@@ -69,22 +70,22 @@ export default function Useredd({userID}){
         setLogin(null);
         setHaslo(null);
         setEmail(null);
-        setTelefon(null);
         setPesel(null);
         setNrDowodu(null);
     }
     useEffect(()=>{
-        Axios.post('http://localhost:8080/UpdateDanePV', {
-            userID: UserID
-        }).then((response)=>{
-            if(response){
-                setShowUseres(response.data)
-            }
+
+    })
+
+    function get(){
+        Axios.get(`http://localhost:8080/Dane/${UserID}`).then(response=>{
+            ShowUseres.push(response.data)
         })
-    }, [UserID])
+    }
+    console.log(ShowUseres)
     return(
         <div className="Foremka">
-            {ShowUseres.length > 0 ? <TableContainer component={Paper}>
+            {ShowUseres.length ? <TableContainer component={Paper}>
                 <Table aria-label="simple table">
                     <TableHead className="TableAdmin">
                         <TableRow>
@@ -104,26 +105,21 @@ export default function Useredd({userID}){
                                 <TableCell className="TableAdminCell"><input className="EditInput" defaultValue={Login} onChange={(e)=>setLogin(e.target.value)}/></TableCell>
                                 <TableCell className="TableAdminCell"><input className="EditInput" defaultValue={Email} onChange={(e)=>setEmail(e.target.value)}/></TableCell>
                                 <TableCell className="TableAdminCell"><input id="PeselInput" defaultValue={Pesel} onChange={(e)=>setPesel(e.target.value)}/></TableCell>
-                                <TableCell className="TableAdminCell"><input id="EditInput" defaultValue={NrDomodu} onChange={(e)=>setNrDowodu(e.target.value)}/></TableCell>
+                                <TableCell className="TableAdminCell"><input id="EditInput" defaultValue={NrDowodu} onChange={(e)=>setNrDowodu(e.target.value)}/></TableCell>
                                 <TableCell className="TableAdminCell"><button id="ActionButtonSave" onClick={()=>{Save()}}>Zapisz</button></TableCell>
                                 <TableCell className="TableAdminCell"><button id="ActionButtonAnuluj" onClick={()=>{Anuluj()}}>Anuluj</button></TableCell>
                             </TableRow> : "" }
-                        {ShowUseres.map((row) => (
-                            <TableRow
-                                key={row.name}
-                            >
-                                <TableCell className="TableAdminCell" align="center" scope="row">{row.Imie}</TableCell>
-                                <TableCell className="TableAdminCell" align="center">{row.nazwisko}</TableCell>
-                                <TableCell className="TableAdminCell" align="center">{row.login}</TableCell>
-                                <TableCell className="TableAdminCell" align="center">{row.email}</TableCell>
-                                <TableCell className="TableAdminCell" align="center">{row.nrDowodu}</TableCell>
-                                <TableCell className="TableAdminCell" align="center">{row.pesel}</TableCell>
-                                <TableCell align="center" className="TableAdminCell"><EditIcon className="EditIcon" onClick={()=>HandelEdit(row.ID_log)}/></TableCell>
-                            </TableRow>
-                        ))}
+                        <TableRow>
+                            <TableCell>
+                                {ShowUseres.toString()}
+                            </TableCell>
+                        </TableRow>
                     </TableBody>
                 </Table>
             </TableContainer> : ""}
+
+            {ShowUseres.length && ShowUseres[0].pesel.toString()}
+            <button onClick={get}>Clike mE</button>
         </div>
     )
 }

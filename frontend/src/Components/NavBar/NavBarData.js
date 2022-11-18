@@ -81,7 +81,7 @@ export const NavBarDataUser = [
     {
         name: "Moj profil",
         img: <AccountCircleIcon/>,
-        link: "/Profil"
+        link: "/PanelUzy"
     },
     {
         name: "Logout",

@@ -10,14 +10,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "dane_uzyt")
 @NoArgsConstructor
+@AllArgsConstructor
 public class DanePVJPA {
+
+    @Id
+    private Long id;
 
     @Column(name = "nr_dowodu")
     private String nrDowodu;
     @Column
     private Long pesel;
 
-    @Id
     @OneToOne(cascade ={CascadeType.MERGE, CascadeType.DETACH})
     @JoinColumn(name = "id")
     private UzytkownikJPA uzytkownik;
