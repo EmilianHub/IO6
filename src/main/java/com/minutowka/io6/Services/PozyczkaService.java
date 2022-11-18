@@ -51,4 +51,11 @@ public class PozyczkaService {
     public Long kolejnaPozyczka (Long id){
      return pozyczkaRepo.countAllByUzytkownikId(id);
     }
+
+    public Pozyczka findPozyczkaWithId(Long id) {
+        PozyczkaJPA pozyczkaJPA = pozyczkaRepo.findById(id)
+                .orElseThrow(() -> CustomExceptionBuilder.getCustomException(HttpStatus.NOT_FOUND, "Nie znaleziono pozyczki"));
+
+        return PozyczkaMapper.toDTO(pozyczkaJPA);
+    }
 }

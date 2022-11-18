@@ -1,0 +1,26 @@
+.SkTabela{
+    margin-top: 12%;
+    margin-left: 10%;
+    max-width: 80%;
+    border: solid gray 1px;
+}
+
+.SkTabela .SkNaglowek{
+    background-color: greenyellow;
+    font-weight: bold;
+}
+
+.SkInput{
+    text-align: center;
+    font-size: large;
+}
+
+.SkTabela .SkCell{
+    font-size: large;
+}
+
+.SkCell .SkButton{
+    background-color: greenyellow;
+    border-radius: 10px;
+    border: solid gray 1px;
+}

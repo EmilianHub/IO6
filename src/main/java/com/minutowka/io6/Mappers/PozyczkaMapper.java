@@ -30,7 +30,7 @@ public class PozyczkaMapper {
                 .kwotaPozyczki(pozyczkaJPA.getKwota())
                 .rata(pozyczkaJPA.getRata())
                 .rrso(pozyczkaJPA.getRrso())
-                .dataZaciagnieciaPozyczki(pozyczkaJPA.getData_konca())
+                .dataZaciagnieciaPozyczki(pozyczkaJPA.getData_pobrania())
                 .dataZakonczeniaPozyczki(pozyczkaJPA.getData_konca())
                 .uzytkownik(UzytkownikMapper.toDTO(pozyczkaJPA.getUzytkownik()))
                 .active(pozyczkaJPA.isActive())

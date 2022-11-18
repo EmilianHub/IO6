@@ -12,6 +12,7 @@ import ProfilForm from "./Components/Profil/ProfilForm";
 import DaneKredytowe from "./Components/DaneKredytowe/DaneKredytowe"
 import Logout from "./Components/Logout"
 import PanelUzyForm from "./Components/PanelUzyForm/PanelUzyFomr"
+import SplacKredyt from "./Components/SplacanieKredytu/SplacanieKredytu"
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                   <Route path={"/kredyt-podsumowanie"} element={<DaneKredytowe/>}/>
                   <Route path={"/Logout"} element={<Logout/>}/>
                   <Route path={"/PanelUzy"} element={<PanelUzyForm/>}/>
+                  <Route path={"/splacKredyt/:idPozyczki"} element={<SplacKredyt/>}/>
               </Routes>
           </Router>
       </div>

@@ -48,7 +48,7 @@ export default function ProfilForm(){
                 <td className={"ctd"}> {value.dataZakonczeniaPozyczki}</td>
                 <td className={"ctd"}> {value.rata} PLN</td>
                 <td className={"ctd"}> {value.active ? "Aktywna" : "Splacona"}</td>
-                <td className={"ctd"}> <button className={"td-butn"} disabled={!value.active} onClick={() => navigate(`/splata/${value.id}`)}>Spłać</button></td>
+                <td className={"ctd"}> <button className={"td-butn"} disabled={!value.active} onClick={() => navigate(`/splacKredyt/${value.id}`)}>Spłać</button></td>
             </tr>
         })}
             </tbody>
