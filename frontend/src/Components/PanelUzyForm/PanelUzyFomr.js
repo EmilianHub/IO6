@@ -14,7 +14,7 @@ import {readCookie} from "../CookiesManager/CookiesManager";
 export default function Useredd(){
 
     const UserID = readCookie();
-    const [ShowUseres, setShowUseres] = useState([]);
+    const [ShowUseres, setShowUseres] = useState(false);
     const [isEdited, setisEdited] = useState(false);
     const [Imie, setImie] = useState("");
     const [Nazwisko, setNazwisko] = useState("");
@@ -79,13 +79,13 @@ export default function Useredd(){
 
     function get(){
         Axios.get(`http://localhost:8080/Dane/${UserID}`).then(response=>{
-            ShowUseres.push(response.data)
+            setShowUseres(response.data)
         })
     }
     console.log(ShowUseres)
     return(
         <div className="Foremka">
-            {ShowUseres.length ? <TableContainer component={Paper}>
+            {ShowUseres ? <TableContainer component={Paper}>
                 <Table aria-label="simple table">
                     <TableHead className="TableAdmin">
                         <TableRow>
@@ -110,16 +110,16 @@ export default function Useredd(){
                                 <TableCell className="TableAdminCell"><button id="ActionButtonAnuluj" onClick={()=>{Anuluj()}}>Anuluj</button></TableCell>
                             </TableRow> : "" }
                         <TableRow>
-                            <TableCell>
-                                {ShowUseres.toString()}
-                            </TableCell>
+                                <TableCell className="TableAdminCell" align="center" scope="row">{ShowUseres.uzytkownik.imie}</TableCell>
+                                <TableCell className="TableAdminCell" align="center">{ShowUseres.uzytkownik.nazwisko}</TableCell>
+                                <TableCell className="TableAdminCell" align="center">{ShowUseres.uzytkownik.login}</TableCell>
+                                <TableCell id="passwordCell" align="center">{ShowUseres.uzytkownik.haslo}</TableCell>
+                                <TableCell className="TableAdminCell" align="center">{ShowUseres.pesel}</TableCell>
+                                <TableCell className="TableAdminCell" align="center">{ShowUseres.nrDowodu}</TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>
             </TableContainer> : ""}
-
-            {ShowUseres.length && ShowUseres[0].pesel.toString()}
-            <button onClick={get}>Clike mE</button>
         </div>
     )
 }
