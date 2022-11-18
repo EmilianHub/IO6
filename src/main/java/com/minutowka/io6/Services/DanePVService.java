@@ -1,9 +1,11 @@
 package com.minutowka.io6.Services;
 
 import com.minutowka.io6.DTO.DanePV;
-import com.minutowka.io6.Exceptions.CustomException;
 import com.minutowka.io6.Exceptions.CustomExceptionBuilder;
+import com.minutowka.io6.JPA.DanePVJPA;
 import com.minutowka.io6.JPA.UzytkownikJPA;
+import com.minutowka.io6.Mappers.DanePVMapper;
+import com.minutowka.io6.Mappers.UzytkownikMapper;
 import com.minutowka.io6.Repositories.DanePVRepo;
 import com.minutowka.io6.Repositories.UzytkownikRepo;
 import lombok.RequiredArgsConstructor;
@@ -17,10 +19,13 @@ import java.util.Objects;
 public class DanePVService {
     private final DanePVRepo danePVRepo;
     private final UzytkownikRepo uzytkownikRepo;
-    public String updateDane(DanePV danePV){
+    public DanePV updateDane(DanePV danePV){
         verifyDanePresence(danePV);
 
-        UzytkownikJPA uzytkownikJPA = uzytkownikRepo
+        UzytkownikJPA uzytkownikJPA = UzytkownikMapper.toJPA(danePV.getUzytkownik());
+        DanePVJPA danePVJPA = DanePVMapper.toJPA(danePV,uzytkownikJPA);
+        danePVJPA=danePVRepo.save(danePVJPA);
+        return DanePVMapper.toDTO(danePVJPA);
     }
     private void verifyDanePresence(DanePV danePV){
         if (Objects.isNull(danePV.getNrDowodu())){

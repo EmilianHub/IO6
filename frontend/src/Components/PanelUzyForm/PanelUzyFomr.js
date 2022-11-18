@@ -13,8 +13,6 @@ import Paper from '@mui/material/Paper';
 export default function Useredd({userID}){
     Axios.defaults.withCredentials = true;
     const UserID = userID;
-    const [SelectValue, setSelectValue] = useState("USER");
-    const [isEmpty, setIsEmpty] = useState(true);
     const [ShowUseres, setShowUseres] = useState([]);
     const [isEdited, setisEdited] = useState(false);
     const [Imie, setImie] = useState("");
@@ -22,7 +20,6 @@ export default function Useredd({userID}){
     const [Login, setLogin] = useState("");
     const [Haslo, setHaslo] = useState("");
     const [Email, setEmail] = useState("");
-    const [Telefon, setTelefon] = useState("");
     const [Pesel, setPesel] = useState("");
     const [NrDowodu, setNrDowodu] = useState("");
     const [SelectedID, setSelectedID] = useState("");
@@ -47,7 +44,7 @@ export default function Useredd({userID}){
     }
 
     function Save() {
-        Axios.put('http://localhost:5000/EddUser', {
+        Axios.put('http://localhost:8080/UpdateDanePV', {
             id: SelectedID,
             imie: Imie,
             nazwisko: Nazwisko,
@@ -77,7 +74,7 @@ export default function Useredd({userID}){
         setNrDowodu(null);
     }
     useEffect(()=>{
-        Axios.post('http://localhost:5000/edycjadanych', {
+        Axios.post('http://localhost:8080/UpdateDanePV', {
             userID: UserID
         }).then((response)=>{
             if(response){
