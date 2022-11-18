@@ -18,8 +18,13 @@ public class PozyczkaController {
     PozyczkaService pozyczkaService;
 
     @PostMapping("/profil/{userId}")
-    public Collection<Pozyczka> pokazPozyczki(@PathVariable("userId") Long id){
+    public Collection<Pozyczka> pokazPozyczki(@PathVariable("userId") Long id) {
         return pozyczkaService.findPozyczkiWithUserId(id);
+    }
+
+    @GetMapping("/profil/count/{id}")
+    public Long kolejna (@PathVariable("id")Long id){
+        return pozyczkaService.kolejnaPozyczka(id);
     }
 
 

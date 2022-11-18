@@ -18,7 +18,7 @@ export default function ProfilForm(){
     }
     useEffect(()=> {
         Dane();
-    },[])
+    },[userId])
     function refreshPage() {
         window.location.reload(false);
     }
@@ -51,8 +51,6 @@ export default function ProfilForm(){
                 <td className={"ctd"}> <button className={"td-butn"} disabled={!value.active} onClick={() => navigate(`/splata/${value.id}`)}>Spłać</button></td>
             </tr>
         })}
-
-
             </tbody>
         </table>
         </div>
