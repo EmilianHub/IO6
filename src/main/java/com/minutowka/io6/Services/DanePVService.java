@@ -1,6 +1,7 @@
 package com.minutowka.io6.Services;
 
 import com.minutowka.io6.DTO.DanePV;
+import com.minutowka.io6.DTO.Uzytkownik;
 import com.minutowka.io6.Exceptions.CustomExceptionBuilder;
 import com.minutowka.io6.JPA.DanePVJPA;
 import com.minutowka.io6.JPA.UzytkownikJPA;
@@ -39,8 +40,17 @@ public class DanePVService {
     }
 
     public DanePV findDane(Long id) {
-        DanePVJPA danePVJPA = danePVRepo.findByUzytkownikId(id);
-        return DanePVMapper.toDTO(danePVJPA);
+        Optional<DanePVJPA> danePVJPA = danePVRepo.findByUzytkownikId(id);
+        if(!danePVJPA.isPresent()){
+            Optional<UzytkownikJPA> uzytkownikJPA = uzytkownikRepo.findById(id);
+            if(uzytkownikJPA.isPresent()){
+                Uzytkownik uzytkownik = UzytkownikMapper.toDTO(uzytkownikJPA.get());
+                return DanePV.builder()
+                        .uzytkownik(uzytkownik)
+                        .build();
+            }
+        }
+        return DanePVMapper.toDTO(danePVJPA.get());
     }
 }
 

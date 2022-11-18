@@ -74,14 +74,12 @@ export default function Useredd(){
         setNrDowodu(null);
     }
     useEffect(()=>{
-
-    })
-
-    function get(){
         Axios.get(`http://localhost:8080/Dane/${UserID}`).then(response=>{
             setShowUseres(response.data)
+            console.log(response.data)
         })
-    }
+    }, [UserID])
+
     console.log(ShowUseres)
     return(
         <div className="Foremka">
