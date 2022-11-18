@@ -12,6 +12,7 @@ public class DanePVMapper {
                 .id(danePVJPA.getId())
                 .pesel(danePVJPA.getPesel())
                 .nrDowodu(danePVJPA.getNrDowodu())
+                .uzytkownik(UzytkownikMapper.toDTO(danePVJPA.getUzytkownik()))
                 .build();
     }
     public static DanePVJPA toJPA (DanePV danePV, UzytkownikJPA uzytkownikJPA) {

@@ -19,7 +19,7 @@ public class DanePVJPA {
     private String nrDowodu;
     @Column
     private Long pesel;
-    @OneToOne
+    @OneToOne(cascade ={CascadeType.MERGE, CascadeType.DETACH})
     @JoinColumn(name = "id")
     private UzytkownikJPA uzytkownik;
 }
