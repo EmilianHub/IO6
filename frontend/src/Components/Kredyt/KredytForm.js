@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import "./KredytForm.css";
 import MoneyIcon from '@mui/icons-material/Money';
@@ -10,6 +10,7 @@ import * as PropTypes from "prop-types";
 import { CFormCheck } from '@coreui/react'
 import {useNavigate, createSearchParams} from "react-router-dom";
 import {format} from "date-fns";
+import {readCookie} from "../CookiesManager/CookiesManager";
 
 
 export default function KredytForm(){
@@ -17,6 +18,7 @@ export default function KredytForm(){
     const[kwota, setKwota] = useState(500);
     const[czas, setCzas] = useState(1);
     const[rrso, setRrso] = useState(0);
+    const userId = readCookie();
     console.log(kwota)
 
     function buildPozyczkiClass(){
@@ -32,11 +34,26 @@ export default function KredytForm(){
             }
         });
     }
+    function czyKolejna(){
+        axios.get(`http://localhost:8080/profil/count/${userId}`)
+            .then((response )=>{
+                console.log(response.data)
+                if(response.data !=0) {
+                    setRrso(1.75)
+                }
+                console.log(response.data)
+
+        }
+        )
+    }
+    useEffect(()=>{
+        czyKolejna();
+    },[userId])
 
     return(
     <div className={"cont"}>
         <div className={"gora"}>
-            <h2 className={"KredytyH2"}>Pożyczka jakiej potrzebujesz w minutę</h2> <br/>
+            <h2 className={"KredytyH2"}>Pożyczka jakiej potrzebujesz w minutę!</h2> <br/>
             <h2 className={"KredytyH2"}>Nawet do 2000 zł</h2> <br/>
             <h2 className={"KredytyH2"}>RRSO: 0%</h2>
         </div>

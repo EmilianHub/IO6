@@ -18,15 +18,17 @@ export default function ProfilForm(){
     }
     useEffect(()=> {
         Dane();
-    },[])
-
+    },[userId])
+    function refreshPage() {
+        window.location.reload(false);
+    }
     console.log(pozyczki)
     return(
-
+        <div className={"cala"}>
         <table className={"ProfilCont"}>
             {/*<div className={"profilH1"}> Profil użytkownika </div>
             <div className={"profilTable"}>*/}
-            <h1  className={"profilH1"}> Moje pożyczki</h1>
+            <h1  className={"profilH1"}> <button className={"profilBtn"} onClick={refreshPage}>Pokaż aktywne pożyczki</button> </h1>
             <tbody>
                     <tr>
         <th className={"cth"}>Nr pożyczki </th>
@@ -37,20 +39,20 @@ export default function ProfilForm(){
         <th className={"cth"}> Status pożyczki </th>
         <th className={"cth"}> Spłać ratę</th>
     </tr>
+
         {pozyczki.map((value) =>{
            return <tr>
-                <td className={"ctd"}> {value.id}</td>
+                <td className={"ctd"}> {value.id}.</td>
                 <td className={"ctd"}> {value.dataZaciagnieciaPozyczki}</td>
-                <td className={"ctd"}> {value.kwotaPozyczki}</td>
+                <td className={"ctd"}> {value.kwotaPozyczki} PLN</td>
                 <td className={"ctd"}> {value.dataZakonczeniaPozyczki}</td>
-                <td className={"ctd"}> {value.rata}</td>
+                <td className={"ctd"}> {value.rata} PLN</td>
                 <td className={"ctd"}> {value.active ? "Aktywna" : "Splacona"}</td>
                 <td className={"ctd"}> <button className={"td-butn"} disabled={!value.active} onClick={() => navigate(`/splata/${value.id}`)}>Spłać</button></td>
             </tr>
         })}
-
-
             </tbody>
         </table>
+        </div>
     )
 }

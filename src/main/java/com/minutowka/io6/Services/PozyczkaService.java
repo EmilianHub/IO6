@@ -39,7 +39,7 @@ public class PozyczkaService {
     }
 
     private double obliczRate(Pozyczka pozyczka, Long okresSplaty){
-        Double kwotaZrrso = pozyczka.getKwotaPozyczki() * pozyczka.getRrso();
+        Double kwotaZrrso = (pozyczka.getKwotaPozyczki() * pozyczka.getRrso());
         return Math.floorDiv(pozyczka.getKwotaPozyczki(), okresSplaty)+kwotaZrrso;
     }
 
@@ -47,5 +47,8 @@ public class PozyczkaService {
         Collection<PozyczkaJPA> pozyczkaJPA = pozyczkaRepo.findAllByUzytkownikId(id);
 
         return pozyczkaJPA.stream().map(PozyczkaMapper::toDTO).collect(Collectors.toList());
+    }
+    public Long kolejnaPozyczka (Long id){
+     return pozyczkaRepo.countAllByUzytkownikId(id);
     }
 }
