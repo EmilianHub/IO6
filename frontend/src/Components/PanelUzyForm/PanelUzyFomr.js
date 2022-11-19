@@ -27,20 +27,20 @@ export default function Useredd(){
 
     function HandelEdit(id){
         // eslint-disable-next-line array-callback-return
-        ShowUseres.map((val, key) => {
-            if(val.ID_log === id)
-            {
-                setSelectedID(val.id);
-                setImie(val.imie);
-                setNazwisko(val.nazwisko);
-                setLogin(val.login);
-                setHaslo(val.haslo);
-                setEmail(val.email);
-                setNrDowodu(val.nrDowodu);
-                setPesel(val.pesel);
 
-            }
-        })
+
+
+                setSelectedID(ShowUseres.uzytkownik.id);
+                setImie(ShowUseres.uzytkownik.imie);
+                setNazwisko(ShowUseres.uzytkownik.nazwisko);
+                setLogin(ShowUseres.uzytkownik.login);
+                setHaslo(ShowUseres.haslo);
+                setEmail(ShowUseres.uzytkownik.email);
+                setNrDowodu(ShowUseres.nrDowodu);
+                setPesel(ShowUseres.pesel);
+
+
+
         setisEdited(true);
     }
 
@@ -91,6 +91,7 @@ export default function Useredd(){
                             <TableCell className="Naglowek" align="center">Nazwisko</TableCell>
                             <TableCell className="Naglowek" align="center">Login</TableCell>
                             <TableCell className="Naglowek" align="center">Email</TableCell>
+                            <TableCell className="Naglowek" align="center">Pesel</TableCell>
                             <TableCell className="Naglowek" align="center">NrDowodu</TableCell>
                             <TableCell className="Naglowek" align="center">Edytuj</TableCell>
                         </TableRow>
@@ -108,12 +109,14 @@ export default function Useredd(){
                                 <TableCell className="TableAdminCell"><button id="ActionButtonAnuluj" onClick={()=>{Anuluj()}}>Anuluj</button></TableCell>
                             </TableRow> : "" }
                         <TableRow>
-                                <TableCell className="TableAdminCell" align="center" scope="row">{ShowUseres.uzytkownik.imie}</TableCell>
-                                <TableCell className="TableAdminCell" align="center">{ShowUseres.uzytkownik.nazwisko}</TableCell>
-                                <TableCell className="TableAdminCell" align="center">{ShowUseres.uzytkownik.login}</TableCell>
-                                <TableCell id="passwordCell" align="center">{ShowUseres.uzytkownik.haslo}</TableCell>
-                                <TableCell className="TableAdminCell" align="center">{ShowUseres.pesel}</TableCell>
-                                <TableCell className="TableAdminCell" align="center">{ShowUseres.nrDowodu}</TableCell>
+                            <TableCell className="TableAdminCell" align="center" scope="row">{ShowUseres.uzytkownik.imie}</TableCell>
+                            <TableCell className="TableAdminCell" align="center">{ShowUseres.uzytkownik.nazwisko}</TableCell>
+                            <TableCell className="TableAdminCell" align="center">{ShowUseres.uzytkownik.login}</TableCell>
+                            <TableCell className="TableAdminCell" align="center">{ShowUseres.uzytkownik.email}</TableCell>
+                            <TableCell id="passwordCell" align="center">{ShowUseres.uzytkownik.haslo}</TableCell>
+                            <TableCell className="TableAdminCell" align="center">{ShowUseres.pesel}</TableCell>
+                            <TableCell className="TableAdminCell" align="center">{ShowUseres.nrDowodu}</TableCell>
+                            <TableCell align="center" className="TableAdminCell"><EditIcon className="EditIcon" onClick={()=>HandelEdit(ShowUseres.uzytkownik.id)}/></TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>
