@@ -91,8 +91,8 @@ export default function Useredd(){
                             <TableCell className="Naglowek" align="center">Nazwisko</TableCell>
                             <TableCell className="Naglowek" align="center">Login</TableCell>
                             <TableCell className="Naglowek" align="center">Email</TableCell>
-                            <TableCell className="Naglowek" align="center">Pesel</TableCell>
                             <TableCell className="Naglowek" align="center">NrDowodu</TableCell>
+                            <TableCell className="Naglowek" align="center">Pesel</TableCell>
                             <TableCell className="Naglowek" align="center">Edytuj</TableCell>
                         </TableRow>
                     </TableHead>
@@ -103,7 +103,6 @@ export default function Useredd(){
                                 <TableCell className="TableAdminCell"><input className="EditInput" defaultValue={Nazwisko} onChange={(e)=>setNazwisko(e.target.value)}/></TableCell>
                                 <TableCell className="TableAdminCell"><input className="EditInput" defaultValue={Login} onChange={(e)=>setLogin(e.target.value)}/></TableCell>
                                 <TableCell className="TableAdminCell"><input className="EditInput" defaultValue={Email} onChange={(e)=>setEmail(e.target.value)}/></TableCell>
-                                <TableCell className="TableAdminCell"><input id="PeselInput" defaultValue={Pesel} onChange={(e)=>setPesel(e.target.value)}/></TableCell>
                                 <TableCell className="TableAdminCell"><input id="EditInput" defaultValue={NrDowodu} onChange={(e)=>setNrDowodu(e.target.value)}/></TableCell>
                                 <TableCell className="TableAdminCell"><button id="ActionButtonSave" onClick={()=>{Save()}}>Zapisz</button></TableCell>
                                 <TableCell className="TableAdminCell"><button id="ActionButtonAnuluj" onClick={()=>{Anuluj()}}>Anuluj</button></TableCell>
@@ -113,9 +112,9 @@ export default function Useredd(){
                             <TableCell className="TableAdminCell" align="center">{ShowUseres.uzytkownik.nazwisko}</TableCell>
                             <TableCell className="TableAdminCell" align="center">{ShowUseres.uzytkownik.login}</TableCell>
                             <TableCell className="TableAdminCell" align="center">{ShowUseres.uzytkownik.email}</TableCell>
-                            <TableCell id="passwordCell" align="center">{ShowUseres.uzytkownik.haslo}</TableCell>
-                            <TableCell className="TableAdminCell" align="center">{ShowUseres.pesel}</TableCell>
                             <TableCell className="TableAdminCell" align="center">{ShowUseres.nrDowodu}</TableCell>
+                            <TableCell className="TableAdminCell" align="center">{ShowUseres.pesel}</TableCell>
+
                             <TableCell align="center" className="TableAdminCell"><EditIcon className="EditIcon" onClick={()=>HandelEdit(ShowUseres.uzytkownik.id)}/></TableCell>
                         </TableRow>
                     </TableBody>

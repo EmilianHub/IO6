@@ -13,13 +13,12 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class DanePVJPA {
 
-    @Id
-    private Long id;
-
     @Column(name = "nr_dowodu")
     private String nrDowodu;
+    @Id
     @Column
     private Long pesel;
+
 
     @OneToOne(cascade ={CascadeType.MERGE, CascadeType.DETACH})
     @JoinColumn(name = "id")
