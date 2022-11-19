@@ -28,7 +28,7 @@ export default function LogForm(){
     return(
         <div className="Card1">
             <div  className={"formStyle1"} onSubmit={"handleSubmit"}>
-                <div >Logowanie </div> <br/>
+                <div className={"formHeader"}>Logowanie </div> <br/>
                 <div>
 
                     <label className={"labelStyle1"}>Login:</label><br/>
@@ -41,7 +41,6 @@ export default function LogForm(){
                 </div>
 
                 <button className="button1"onClick={subForm}>Zaloguj</button>
-                <button className="button1"onClick={readCookie}>read</button>
             </div> </div>
 
 

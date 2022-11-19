@@ -19,6 +19,7 @@ export default function ProfilForm(){
     useEffect(()=> {
         Dane();
     },[userId])
+
     function refreshPage() {
         window.location.reload(false);
     }

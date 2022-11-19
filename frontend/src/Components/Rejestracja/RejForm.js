@@ -58,7 +58,7 @@ export default function RejForm(){
     return(
         <div className="Card">
             <div  className={"formStyle"} onSubmit={"handleSubmit"}>
-                <div >Rejestracja </div> <br/>
+                <div className={"formHeader"}>Rejestracja </div> <br/>
                 <div >
                     <label className={"labelStyle"}>Imię:</label><br/>
                     <input className={"inputStyle"} onChange={(v)=>setImie(v.target.value)} /><br/>

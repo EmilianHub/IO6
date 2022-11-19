@@ -53,7 +53,7 @@
 
 .Formularz .SubmitButton{
     border-radius: 4px;
-    background-color: #056ad7;
+    background: linear-gradient(to bottom right, #056ad7, blue);
     color: #fff;
     border: 0 none;
     padding: 12px 12px;
@@ -62,11 +62,12 @@
     margin-top: 12px;
     cursor: pointer;
     width: 120px;
+    transition-duration: 0.8s;
 }
 
 .Formularz .SubmitButton:hover{
     cursor: pointer;
-    background-color: dodgerblue;
+    background: linear-gradient(to bottom right, #056ad7, dodgerblue);
     transition-duration: 0.8s;
 }
 

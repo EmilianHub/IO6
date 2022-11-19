@@ -2,9 +2,9 @@
     padding-top: 7%;
     background-image: url("tlo.jpg");
     background-size: cover;
-    height:900px;
-
+    height:100vh;
 }
+
 .gora .KredytyH1 {
     text-align: center;
     font-size:70px;
@@ -28,7 +28,7 @@
     border-radius: 30%;
     position: center;
     padding: 12px 28px;
-    background-color: red;
+    background: red;
 }
 .gora .KredytyButton:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -117,11 +117,11 @@
 .dol .KredytyButton:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
-.dol .KredytyButton{
-    border-radius: 30%;
+.tab1 .KredytyButton{
+    border-radius: 30px;
     position: center;
     padding: 12px 18px;
-    background-color: red;
+    background: linear-gradient(to bottom left, #b32400, #ff3300);
     font-weight: bold;
 }
 .kolorek{

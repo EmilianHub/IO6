@@ -6,21 +6,23 @@
 }
 
 .SkTabela .SkNaglowek{
-    background-color: greenyellow;
-    font-weight: bold;
+    background: linear-gradient(to top left, greenyellow, green);
+    font-weight: bolder;
 }
 
 .SkInput{
     text-align: center;
     font-size: large;
+    font-weight: bold;
 }
 
 .SkTabela .SkCell{
     font-size: large;
+    font-weight: bold;
 }
 
 .SkCell .SkButton{
-    background-color: greenyellow;
+    background: linear-gradient(to bottom right, greenyellow, green);
     border-radius: 10px;
     border: solid gray 1px;
 }
