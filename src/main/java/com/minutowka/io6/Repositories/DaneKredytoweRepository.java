@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface DaneKredytoweRepository extends JpaRepository<DaneKredytoweJPA, Long> {
-    Optional<DaneKredytoweJPA> findDaneKredytoweJPAByUzytkownikId(Long id);
+    Optional<DaneKredytoweJPA> findByUzytkownikJPAId(Long id);
 }

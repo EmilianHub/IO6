@@ -1,16 +1,28 @@
-import React from 'react';
-import {NavBarData} from "./NavBarData";
+import React, {useState, useEffect} from 'react';
+import {NavBarData, NavBarDataUser} from "./NavBarData";
 import {Link} from "react-router-dom";
 import "./NavBar.css"
+import {readCookie} from "../CookiesManager/CookiesManager"
 
 const Navbar = () => {
+    const userId = readCookie();
+    const [navBar, setNavBar] = useState([]);
+
+    useEffect(() => {
+        if(!userId){
+            setNavBar(NavBarData)
+        }else {
+            setNavBar(NavBarDataUser)
+        }
+    })
+
     return (
         <nav className={"NavBarItems"}>
             <h1 className={"Logo"}>
                 Minutówka
             </h1>
             <ul className={"items-nav"}>
-                    {NavBarData.map((key, value) => {
+                    {navBar.map((key, value) => {
                         return (
                         <li key={value}>
                             <Link to= {key.link} className={"nav-text"}>

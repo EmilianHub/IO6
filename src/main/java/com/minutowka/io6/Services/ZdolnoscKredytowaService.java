@@ -1,9 +1,6 @@
 package com.minutowka.io6.Services;
 
-import com.minutowka.io6.DTO.Pozyczki;
-import com.minutowka.io6.Exceptions.CustomExceptionBuilder;
-import com.minutowka.io6.JPA.DaneKredytoweJPA;
-import com.minutowka.io6.Repositories.DaneKredytoweRepository;
+import com.minutowka.io6.DTO.Pozyczka;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,33 +9,20 @@ import java.time.Duration;
 @Service
 @RequiredArgsConstructor
 public class ZdolnoscKredytowaService {
-    private final DaneKredytoweRepository daneKredytoweRepository;
 
-    private final static String POSITIVE_RESPONSE_MESSAGE = "Dane kredytowe zostały zapisane poprwanie";
-    private final static String POSITIVE_RESPONSE = "POSITIVE";
+    private final PozyczkaService pozyczkaService;
     private final static String NEGATIVE_RESPONSE = "NEGATIVE";
 
-    public String obliczZdolnoscKredytowa(Pozyczki pozyczki, String wydatki, String zarobki, String raty){
-        double wysokoscRatyKredytu = Double.parseDouble(zarobki) - Double.parseDouble(wydatki) - Double.parseDouble(raty);
-        long okresSplaty = Duration.between(pozyczki.getDataZaciagnieciaPozyczki(), pozyczki.getDataZakonczeniaPozyczki()).toDays();
+    public String obliczZdolnoscKredytowa(Pozyczka pozyczka, Double wydatki, Double zarobki, Double raty){
+        long wysokoscRatyKredytu = (long) (zarobki - wydatki - raty);
+        long okresSplaty = Duration.between(pozyczka.getDataZaciagnieciaPozyczki(), pozyczka.getDataZakonczeniaPozyczki()).toDays();
         okresSplaty = Math.floorDiv(okresSplaty, 30);
 
         double maxWysokoscKredytu =  wysokoscRatyKredytu * okresSplaty;
 
-        if(maxWysokoscKredytu >= pozyczki.getKwotaPozyczki()){
-            return POSITIVE_RESPONSE;
+        if(maxWysokoscKredytu >= pozyczka.getKwotaPozyczki()){
+            return pozyczkaService.savePozyczka(pozyczka, okresSplaty);
         }
         return NEGATIVE_RESPONSE;
-    }
-
-    public String saveDaneKredytowe(Double wydatki, Double zarobki, Double raty) {
-        DaneKredytoweJPA dbDaneKredytowe = daneKredytoweRepository.findDaneKredytoweJPAByUzytkownikId(1L)
-                .orElseThrow(() -> CustomExceptionBuilder.getCustomException("No entity found"));
-
-        dbDaneKredytowe.setWydatki(wydatki);
-        dbDaneKredytowe.setZarobki(zarobki);
-        daneKredytoweRepository.save(dbDaneKredytowe);
-
-        return POSITIVE_RESPONSE_MESSAGE;
     }
 }

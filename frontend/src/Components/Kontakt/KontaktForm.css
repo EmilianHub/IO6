@@ -1,73 +1,76 @@
-input:invalid {
+.KredytyBack{
+    padding-top: 4.5%;
+    background-color: #FFA07A;
+    height: 100%;
+}
+
+.KredytyInput:invalid {
     border-color: red;
     outline: none;
     box-shadow: 0 0 2px red;
 }
-input:required:valid {
+.KredytyInput:required:valid {
     border-color: #4dcc23;
     outline: none;
     box-shadow: 0 0 2px #4dcc23;
 }
-input:invalid,
-textarea:invalid {
+.KredytyInput:invalid,
+.KredytyText:invalid {
     border-color: red;
     outline: none;
     box-shadow: 0 0 2px red;
 }
 
-input:required:valid,
-textarea:required:valid {
+.KredytyInput:required:valid,
+.KredytyText:required:valid {
     border-color: #4dcc23;
     outline: none;
     box-shadow: 0 0 2px #4dcc23;
 }
 /* jeżeli pole jest błędne ale i nie pokazuje placeholdera */
-input:not(:placeholder-shown):invalid,
-textarea:not(:placeholder-shown):invalid {
+.KredytyInput:not(:placeholder-shown):invalid,
+.KredytyText:not(:placeholder-shown):invalid {
     border-color: red;
     outline: none;
     box-shadow: 0 0 2px red;
 }
 
-input:not(:placeholder-shown):required:valid,
-textarea:not(:placeholder-shown):required:valid {
+.KredytyInput:not(:placeholder-shown):required:valid,
+.KredytyText:not(:placeholder-shown):required:valid {
     border-color: #4dcc23;
     outline: none;
     box-shadow: 0 0 2px #4dcc23;
 }
-input {}
+.KredytyInput {}
 .form-error-text {
     display: none;
 }
-input:not(:placeholder-shown):invalid {
+.KredytyInput:not(:placeholder-shown):invalid {
     border-color: tomato;
     outline: none;
     box-shadow: 0 0 2px tomato;
 }
-input:not(:placeholder-shown):invalid ~ .form-error-text {
+.KredytyInput:not(:placeholder-shown):invalid ~ .form-error-text {
     display: block;
 }
-input:not(:placeholder-shown):required:valid {
+.KredytyInput:not(:placeholder-shown):required:valid {
     border-color: #4dcc23;
     outline: none;
     box-shadow: 0 0 2px #4dcc23;
 }
-input:not(:placeholder-shown):required:valid ~ .form-error-text {
+.KredytyInput:not(:placeholder-shown):required:valid ~ .form-error-text {
     display: none;
-}
-body{
-    background-color: #FFA07A;
 }
 .form-message {
     color: tomato;
     padding: 10px 0;
 }
-.form-message h3 {
+.form-message .KredytyH3 {
     font-size: 1rem;
     margin-bottom: 0.2rem;
     margin-top: 0;
 }
-.form-message ul {
+.form-message .KredytyUl {
     list-style: none;
     font-size: 0.8rem;
     margin:0 0 1rem;
@@ -80,20 +83,20 @@ body{
 .form-error-inline .form-error-text {
     display: none;
 }
-h1{
+.KredytyH1{
     text-align: center;
     font-weight: bold;
     padding: 20px;
     font-size: 42px;
     font-family: 'Times New Roman';
 }
-h2{
+.KredytyH2{
     text-align: center;
     font-family: 'Times New Roman';
     padding: 20px;
     font-size: 25px;
 }
-h3{
+.KredytyH3{
     font-weight: bold;
     text-decoration: underline;
 }
@@ -103,5 +106,4 @@ h3{
 }
 .submit-btn{
     font-weight: bold;
-    ;
 }

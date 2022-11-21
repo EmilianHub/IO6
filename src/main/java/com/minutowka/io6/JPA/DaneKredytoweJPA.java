@@ -1,19 +1,25 @@
 package com.minutowka.io6.JPA;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
+@Builder
 @Table(name = "dane_kredytowe")
+@AllArgsConstructor
+@NoArgsConstructor
 public class DaneKredytoweJPA {
 
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Version
+    private LocalDateTime version;
 
     @Column(name = "nr_konta")
     private String nrKonta;
@@ -26,5 +32,5 @@ public class DaneKredytoweJPA {
 
     @OneToOne
     @JoinColumn(name = "id_uzyt")
-    private UzytkownicyJPA uzytkownik;
+    private UzytkownikJPA uzytkownikJPA;
 }

@@ -1,21 +1,25 @@
-#reg{
-    text-align: center;
+.reg{
+    padding-top: 7%;
+    margin-left: 7%;
+    width: 80%;
 }
-a{
+.RegulaminA{
     background-color: #FFA07A;
-    text-align: justify;
+    text-align: left;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 30px;
     border-color: #FFA07A;
     lighting-color: #FFA07A;
     line-height: normal;
     color: black;
+    border-radius: 5px;
 }
-a:hover{
+.RegulaminA:hover{
     color: red;
     text-decoration: underline;
 }
 .link{
-    text-align: justify-all;
-    padding-left:600px ;
+    margin-left: 2%;
+    padding-bottom: 1%;
+    text-align: left;
 }
