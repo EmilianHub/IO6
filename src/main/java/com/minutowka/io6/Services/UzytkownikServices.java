@@ -8,6 +8,8 @@ import com.minutowka.io6.Repositories.UzytkownikRepo;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,10 +21,14 @@ public class UzytkownikServices {
 
     private final String POSITIVE = "POSITIVE";
     private final UzytkownikRepo uzytkownikRepo;
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     private final Pattern EMAIL_SYNTAX = Pattern.compile("[/!#$%^&*()/]");
 
     public String saveUzytkownik(Uzytkownik rej){
         verifyLoginAndEmailPresence(rej);
+
+        String enryptedPassword = passwordEncoder.encode(rej.getHaslo());
+        rej.setHaslo(enryptedPassword);
 
         UzytkownikJPA uzytkownikREJ = UzytkownikMapper.toJPA(rej);
         uzytkownikRepo.save(uzytkownikREJ);
