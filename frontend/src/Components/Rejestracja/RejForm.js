@@ -38,7 +38,7 @@ export default function RejForm(){
                 setLoginMessage(errMess)
             }else if (errMess.toString().includes("Email")){
                 setEmailMessage(errMess)
-            }else if (errMess.toString().includes("Hasło")){
+            }else if (errMess.toString().includes("Haslo")){
                 setHasloMessage(errMess)
             }
         })

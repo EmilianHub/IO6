@@ -12,9 +12,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 import java.util.Optional;
 import java.util.regex.Pattern;
-
 @Service
 @RequiredArgsConstructor
 public class UzytkownikServices {
@@ -26,6 +26,7 @@ public class UzytkownikServices {
 
     public String saveUzytkownik(Uzytkownik rej){
         verifyLoginAndEmailPresence(rej);
+        verifyHasloPresence(rej);
 
         String enryptedPassword = passwordEncoder.encode(rej.getHaslo());
         rej.setHaslo(enryptedPassword);
@@ -36,7 +37,8 @@ public class UzytkownikServices {
         return POSITIVE;
     }
     public Long getuzytkownik (String login,String haslo){
-        Optional<UzytkownikJPA> uzytkownikJPA = uzytkownikRepo.findByLoginAndHaslo(login,haslo);
+        String enrypteddPassword = passwordEncoder.encode(haslo);
+        Optional<UzytkownikJPA> uzytkownikJPA = uzytkownikRepo.findByLoginAndHaslo(login,enrypteddPassword);
         if (uzytkownikJPA.isPresent()) {
             return uzytkownikJPA.get().getId();
 
@@ -51,7 +53,14 @@ public class UzytkownikServices {
         if(Strings.isEmpty(uzytkownik.getLogin())){
             throw CustomExceptionBuilder.getCustomException(HttpStatus.BAD_REQUEST, "Login is empty");
         }
+
         verifyEmailSyntax(uzytkownik.getEmail());
+    }
+    private void verifyHasloPresence(Uzytkownik uzytkownik){
+        if(Strings.isEmpty(uzytkownik.getHaslo())){
+            throw CustomExceptionBuilder.getCustomException(HttpStatus.BAD_REQUEST, "Haslo is empty");
+        }
+
     }
 
     private void verifyEmailSyntax(String email){
