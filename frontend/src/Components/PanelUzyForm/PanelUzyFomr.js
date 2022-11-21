@@ -104,6 +104,7 @@ export default function Useredd(){
                                 <TableCell className="TableAdminCell"><input className="EditInput" defaultValue={Login} onChange={(e)=>setLogin(e.target.value)}/></TableCell>
                                 <TableCell className="TableAdminCell"><input className="EditInput" defaultValue={Email} onChange={(e)=>setEmail(e.target.value)}/></TableCell>
                                 <TableCell className="TableAdminCell"><input id="EditInput" defaultValue={NrDowodu} onChange={(e)=>setNrDowodu(e.target.value)}/></TableCell>
+                                <TableCell className="TableAdminCell"><input id="EditInput" defaultValue={Pesel} onChange={(e)=>setPesel(e.target.value)}/></TableCell>
                                 <TableCell className="TableAdminCell"><button id="ActionButtonSave" onClick={()=>{Save()}}>Zapisz</button></TableCell>
                                 <TableCell className="TableAdminCell"><button id="ActionButtonAnuluj" onClick={()=>{Anuluj()}}>Anuluj</button></TableCell>
                             </TableRow> : "" }
