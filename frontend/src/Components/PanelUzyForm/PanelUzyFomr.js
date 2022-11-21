@@ -34,7 +34,7 @@ export default function Useredd(){
                 setImie(ShowUseres.uzytkownik.imie);
                 setNazwisko(ShowUseres.uzytkownik.nazwisko);
                 setLogin(ShowUseres.uzytkownik.login);
-                setHaslo(ShowUseres.haslo);
+                setHaslo(ShowUseres.uzytkownik.haslo);
                 setEmail(ShowUseres.uzytkownik.email);
                 setNrDowodu(ShowUseres.nrDowodu);
                 setPesel(ShowUseres.pesel);
@@ -54,6 +54,7 @@ export default function Useredd(){
                 nazwisko: Nazwisko.toString(),
                 email: Email.toString(),
                 login: Login.toString(),
+                haslo: Haslo.toString()
             }
         }).then((response)=>{
             if(response){
@@ -68,7 +69,6 @@ export default function Useredd(){
         setImie(null);
         setNazwisko(null);
         setLogin(null);
-        setHaslo(null);
         setEmail(null);
         setPesel(null);
         setNrDowodu(null);

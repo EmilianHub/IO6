@@ -8,15 +8,19 @@ import com.minutowka.io6.Repositories.UzytkownikRepo;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.ApplicationScope;
 
 
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Pattern;
 @Service
 @RequiredArgsConstructor
+@ApplicationScope
 public class UzytkownikServices {
 
     private final String POSITIVE = "POSITIVE";
@@ -28,8 +32,10 @@ public class UzytkownikServices {
         verifyLoginAndEmailPresence(rej);
         verifyHasloPresence(rej);
 
-        String enryptedPassword = passwordEncoder.encode(rej.getHaslo());
-        rej.setHaslo(enryptedPassword);
+        if(Objects.isNull(rej.getId())){
+            String enryptedPassword = passwordEncoder.encode(rej.getHaslo());
+            rej.setHaslo(enryptedPassword);
+        }
 
         UzytkownikJPA uzytkownikREJ = UzytkownikMapper.toJPA(rej);
         uzytkownikRepo.save(uzytkownikREJ);
@@ -37,13 +43,15 @@ public class UzytkownikServices {
         return POSITIVE;
     }
     public Long getuzytkownik (String login,String haslo){
-        String enrypteddPassword = passwordEncoder.encode(haslo);
-        Optional<UzytkownikJPA> uzytkownikJPA = uzytkownikRepo.findByLoginAndHaslo(login,enrypteddPassword);
-        if (uzytkownikJPA.isPresent()) {
-            return uzytkownikJPA.get().getId();
 
+        Optional<UzytkownikJPA> uzytkownikJPA = uzytkownikRepo.findByLogin(login);
+        if (uzytkownikJPA.isPresent()) {
+            if (passwordEncoder.matches(haslo, uzytkownikJPA.get().getHaslo()))
+            {
+                return uzytkownikJPA.get().getId();
+            }
         }
-        else return 0l;
+        return 0l;
     }
 
     private void verifyLoginAndEmailPresence(Uzytkownik uzytkownik){
